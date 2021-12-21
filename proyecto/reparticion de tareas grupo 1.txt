@@ -1,0 +1,41 @@
+Nerea y Marcos  -> 4
+Victor y Fer    -> 1
+Sara y Elsa     -> 3
+Manu y Pablo    -> 2
+
+Funcionalidades y tareas:
+
+-----------------
+Pack 1
+-----------------
+F1 → Mantenimiento de Usuarios, Perfiles y Relaciones entre ellos, Mantenimiento de la Configuración, y Copias de Seguridad.
+T6 → Parte pública de visualización de Anuncios de Ofertas, Acceso y/o Registro de Usuarios.
+F6 → Mantenimiento de Tiendas y Ofertas de Tiendas.
+-----------------
+
+-----------------
+Pack 2
+-----------------
+F2 → Mantenimiento de Recetas, Pasos, Imágenes en los pasos.
+T1 → Parte pública de visualización de Lista de Recetas con "ficha resumida".
+T2 → Parte pública de visualización de Recetas con "ficha detallada".
+T4 → Parte pública de visualización de Búsqueda detallada de Recetas y Filtrado de Recetas por esos datos.
+
+-----------------
+Pack 3
+-----------------
+F3 → Mantenimiento de Categorias, Mantenimiento de Categorías en Recetas, Mantenimiento de Comentarios en Recetas.
+T3 → Parte pública de visualización de Arbol de Categorias (Clasificaciones) y Filtrado de Recetas por categorías.
+-----------------
+
+-----------------
+Pack 4
+-----------------
+F4 → Mantenimiento de Ingredientes, Mantenimiento de Ingredientes en Recetas.
+F5 → Mantenimiento de Menús, Platos en el menú, y Planificaciones de Menús.
+T5 → Parte pública de visualización de Planificaciones de Menús, Menús y Platos.
+-----------------
+
+
+
+
