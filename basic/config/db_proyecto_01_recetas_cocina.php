@@ -2,7 +2,7 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=daw2_2021-22_01_recetas_cocina',
+    'dsn' => 'mysql:host=localhost;dbname=daw2_recetas',
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8',
