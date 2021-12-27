@@ -28,7 +28,7 @@ AppAsset::register($this);
 <header>
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => 'Aplicación de Recetas',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
@@ -65,6 +65,7 @@ AppAsset::register($this);
                     'items' => [
                          ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
                          ['label' => 'Recetas', 'url' => ['/receta/index']],
+                         ['label' => 'Recetas-Ingredientes', 'url' => ['/recetaingrediente/index']],
                          ['label' => 'Menus', 'url' => '#'],
                          ['label' => 'Usuarios', 'url' => '#'],
                          ['label' => 'Menus', 'url' => '#'],
@@ -115,7 +116,7 @@ AppAsset::register($this);
 
 <footer class="footer mt-auto py-3 text-muted">
     <div class="container">
-        <p class="float-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="float-left">&copy; Daw2 -- 4ºGIISI -- USAL  <?= date('Y') ?></p>
         <p class="float-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
