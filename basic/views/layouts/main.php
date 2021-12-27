@@ -40,9 +40,50 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
+            
+            
+            Yii::$app->user->isGuest ? 
+            (
+                [
+                    'label' => 'Catalogo',
+                    'items' => [
+                        ['label' => 'Ingredientes', 'url' => ['#']],
+                        ['label' => 'Recetas', 'url' => '#'],
+                        ['label' => 'Menus', 'url' => '#'],
+                        ['label' => 'Usuarios', 'url' => '#'],
+                        ['label' => 'Menus', 'url' => '#'],
+                        ['label' => 'Tiendas', 'url' => '#'],
+                    ],
+                ]
+                
+            ) 
+            : 
+            (
+                
+                [
+                    'label' => 'Mantenimiento',
+                    'items' => [
+                         ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
+                         ['label' => 'Recetas', 'url' => '#'],
+                         ['label' => 'Menus', 'url' => '#'],
+                         ['label' => 'Usuarios', 'url' => '#'],
+                         ['label' => 'Menus', 'url' => '#'],
+                         ['label' => 'Tiendas', 'url' => '#'],
+                    ],
+                ]
+           
+    
+            )
+            ,
+
+            Yii::$app->user->isGuest ? 
+            (
                 ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
+                
+            ) 
+            : 
+            (
+                
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
                 . Html::submitButton(
@@ -51,7 +92,11 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
+                
+           
+    
             )
+
         ],
     ]);
     NavBar::end();
