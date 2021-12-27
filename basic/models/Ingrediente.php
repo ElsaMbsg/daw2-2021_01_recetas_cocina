@@ -48,10 +48,10 @@ class Ingrediente extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return IngredientesQuery the active query used by this AR class.
+     * @return IngredienteQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new IngredientesQuery(get_called_class());
+        return new IngredienteQuery(get_called_class());
     }
 }

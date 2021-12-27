@@ -64,7 +64,7 @@ AppAsset::register($this);
                     'label' => 'Mantenimiento',
                     'items' => [
                          ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
-                         ['label' => 'Recetas', 'url' => '#'],
+                         ['label' => 'Recetas', 'url' => ['/receta/index']],
                          ['label' => 'Menus', 'url' => '#'],
                          ['label' => 'Usuarios', 'url' => '#'],
                          ['label' => 'Menus', 'url' => '#'],

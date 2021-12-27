@@ -7,7 +7,7 @@ namespace app\models;
  *
  * @see Ingrediente
  */
-class IngredientesQuery extends \yii\db\ActiveQuery
+class IngredienteQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
