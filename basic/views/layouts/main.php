@@ -64,11 +64,11 @@ AppAsset::register($this);
                     'label' => 'Mantenimiento',
                     'items' => [
                          ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
-                         ['label' => 'Recetas', 'url' => ['/receta/index']],
                          ['label' => 'Recetas-Ingredientes', 'url' => ['/recetaingrediente/index']],
-                         ['label' => 'Menus', 'url' => '#'],
-                         ['label' => 'Usuarios', 'url' => '#'],
-                         ['label' => 'Menus', 'url' => '#'],
+                         ['label' => 'Recetas', 'url' => ['/receta/index']],
+                         ['label' => 'Menu-Receta', 'url' => ['/menureceta/index']],
+                         ['label' => 'Planificacion Menus', 'url' => ['/planificacionmenu/index']],
+                         ['label' => 'Menus', 'url' => ['/menu/index']],
                          ['label' => 'Tiendas', 'url' => '#'],
                     ],
                 ]
