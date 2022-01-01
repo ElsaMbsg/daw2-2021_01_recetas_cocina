@@ -95,7 +95,7 @@ FTI9 - Ingredientes:
     -Filtrado por tipo de ingrediente, vegetariano, vegano...
     -Al pulsar ingrediente, fichas resumidas de ingredientes paginados.
     -Ficha detallada cuando pulsas un ingrediente.
-    
+
 
 FTI10 - Registro y acceso de usuarios:
     -Se debera de realizar un login.
