@@ -66,10 +66,13 @@ AppAsset::register($this);
                          ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
                          ['label' => 'Recetas-Ingredientes', 'url' => ['/recetaingrediente/index']],
                          ['label' => 'Recetas', 'url' => ['/receta/index']],
-                         ['label' => 'Menu-Receta', 'url' => ['/menureceta/index']],
-                         ['label' => 'Planificacion Menus', 'url' => ['/planificacionmenu/index']],
+                         ['label' => 'Menus-Recetas', 'url' => ['/menureceta/index']],
+                         ['label' => 'Planificaciones Menus', 'url' => ['/planificacionmenu/index']],
+                         ['label' => 'Planificaciones', 'url' => ['/planificacion/index']],
                          ['label' => 'Menus', 'url' => ['/menu/index']],
-                         ['label' => 'Tiendas', 'url' => '#'],
+                         ['label' => 'Tiendas', 'url' => ['/tienda/index']],
+                         ['label' => 'Tiendas-Ofertas', 'url' => ['/tiendaoferta/index']],
+                         ['label' => 'Usuarios', 'url' => ['/usuario/index']],
                     ],
                 ]
            
