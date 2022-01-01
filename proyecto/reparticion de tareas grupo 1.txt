@@ -1,9 +1,19 @@
+--------------------------------------------------
+Parejas de trabajo dentro del grupo
+--------------------------------------------------
+
 Nerea y Marcos  -> 4
 Victor y Fer    -> 1
 Sara y Elsa     -> 3
 Manu y Pablo    -> 2
 
-Funcionalidades y tareas:
+                            --------------------------------------------------
+                                  ASIGNACION DE TAREAS POR PRIORIDAD
+                            --------------------------------------------------
+
+--------------------------------------------------
+    Funcionalidades y tareas explicitas
+--------------------------------------------------
 
 -----------------
 Pack 1
@@ -35,6 +45,62 @@ F4 → Mantenimiento de Ingredientes, Mantenimiento de Ingredientes en Recetas.
 F5 → Mantenimiento de Menús, Platos en el menú, y Planificaciones de Menús.
 T5 → Parte pública de visualización de Planificaciones de Menús, Menús y Platos.
 -----------------
+
+----------------------------------------------------------------------------------------
+
+----------------------------------------------------------------
+  Funcionalidades y tareas implicitas  (Puede faltar algo...)
+----------------------------------------------------------------
+
+FTI1 - Portada:
+    -Logotipo, menu clasificacion recetas.
+    -Fichas resumen de N recetas recomendadas centro y paginadas.
+    -Anuncios ofertas tiendas en la derecha.
+
+FTI2 - Filtros clasificacion recetas recomendadas (del mes, de la semana...):
+    -Boton filtrar en los filtros de busqueda.
+    -Filtros de busqueda
+
+FTI3 - Ficha detalle de receta:
+    -Boton marcha atras con almacenamiento de opciones y filtrado en sesion
+
+FTI4 - Filtrado avanzado de recetas:
+    -mas votadas, recomendadas, fav, rapidas, comensales
+    -vegetarianas, veganas, alergenos...
+    -precios en rangos
+
+FTI5 - Seccion recetas con productos de oferta en tiendas:
+    -Mejor que en ficha detallada en el producto aparezca la tienda que mejor
+    oferta tenga del ingrediente y su precio
+
+FTI6 - Menu de categorias de productos que permita avanzar por clics:
+    - Menu a la izquierda con submenus con un esquema de arbol.
+    - Recetas vegetarianas -> postres -> listaria los postres vegetarianos
+
+FTI7- Planificacion de menus de recetas
+    -Menus de tipos de menus como: menus navidad, semana santa, dieta semanal,
+    dieta quince dias...
+    -Fichas resumen de menus y paginados.
+    -Fichas detalle de menus.
+
+FTI8 - Ofertas de tiendas y vista de tiendas:
+    -Filtrado por ciudades o pueblos de tiendas.
+    -Al pulsar tienda, fichas de productos con precio, titulo y descripcion corta
+    centrados con menu de clasificacion de productos por tipo a la izquierda.
+    -Ficha detallada con precio cuando pulsas un producto.
+    -Un usuario tienda puede borrar sus productos pero no su tienda.
+
+FTI9 - Registro y acceso de usuarios:
+    -Se debera de realizar un login.
+    -Se debera realizar una página de registro.
+    -En el registro, el administrador debe confirmar el registro de usuario:
+        -El campo aceptado tendra: 0 (pendiente de aceptar), 1 (aceptado), 2 (No aceptado).
+        -El campo creado tendra: la fecha de creacion del usuario
+
+
+
+
+
 
 
 
