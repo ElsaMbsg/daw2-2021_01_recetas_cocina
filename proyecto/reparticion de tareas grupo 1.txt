@@ -64,6 +64,7 @@ FTI2 - Filtros clasificacion recetas recomendadas (del mes, de la semana...):
 FTI3 - Ficha detalle de receta:
     -Boton marcha atras con almacenamiento de opciones y filtrado en sesion
 
+
 FTI4 - Filtrado avanzado de recetas:
     -mas votadas, recomendadas, fav, rapidas, comensales
     -vegetarianas, veganas, alergenos...
@@ -90,7 +91,13 @@ FTI8 - Ofertas de tiendas y vista de tiendas:
     -Ficha detallada con precio cuando pulsas un producto.
     -Un usuario tienda puede borrar sus productos pero no su tienda.
 
-FTI9 - Registro y acceso de usuarios:
+FTI9 - Ingredientes:
+    -Filtrado por tipo de ingrediente, vegetariano, vegano...
+    -Al pulsar ingrediente, fichas resumidas de ingredientes paginados.
+    -Ficha detallada cuando pulsas un ingrediente.
+    
+
+FTI10 - Registro y acceso de usuarios:
     -Se debera de realizar un login.
     -Se debera realizar una página de registro.
     -En el registro, el administrador debe confirmar el registro de usuario:
