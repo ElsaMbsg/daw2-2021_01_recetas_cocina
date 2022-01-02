@@ -47,12 +47,11 @@ AppAsset::register($this);
                 [
                     'label' => 'Catalogo',
                     'items' => [
-                        ['label' => 'Ingredientes', 'url' => ['#']],
-                        ['label' => 'Recetas', 'url' => '#'],
-                        ['label' => 'Menus', 'url' => '#'],
-                        ['label' => 'Usuarios', 'url' => '#'],
-                        ['label' => 'Menus', 'url' => '#'],
-                        ['label' => 'Tiendas', 'url' => '#'],
+                        ['label' => 'Ingredientes', 'url' => ['/site/veringredientes']],
+                        ['label' => 'Recetas', 'url' => ['/site/verrecetas']],
+                        ['label' => 'Menus', 'url' => ['/site/vermenus']],
+                        ['label' => 'Tiendas', 'url' => ['/site/vertiendas']],
+                        ['label' => '...', 'url' => '#'],
                     ],
                 ]
                 
@@ -83,11 +82,9 @@ AppAsset::register($this);
             Yii::$app->user->isGuest ? 
             (
                 ['label' => 'Login', 'url' => ['/site/login']]
-                
             ) 
             : 
             (
-                
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
                 . Html::submitButton(
@@ -96,9 +93,6 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-                
-           
-    
             )
 
         ],
