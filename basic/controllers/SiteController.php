@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use Yii;
+use yii\data\ActiveDataProvider;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -76,12 +78,21 @@ class SiteController extends Controller
      */
     public function actionVeringredientes()
     {
-        $datos= new Ingrediente;
-        $model=$datos->find()->all();
 
-        return $this->render('ingredientes', [
-            'model' => $model,
-        ]);
+
+            $searchModel = new IngredienteSearch();
+            if (isset($_GET["IngredienteSearch"]["q"])) {
+                $dataProvider = $searchModel->searchQ($this->request->queryParams);
+            }
+            else {
+                $dataProvider = $searchModel->search($this->request->queryParams);
+            }
+
+            return $this->render('ingredientes', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+
+
 
     }
 
