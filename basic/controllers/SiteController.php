@@ -78,8 +78,6 @@ class SiteController extends Controller
      */
     public function actionVeringredientes()
     {
-
-
             $searchModel = new IngredienteSearch();
             if (isset($_GET["IngredienteSearch"]["q"])) {
                 $dataProvider = $searchModel->searchQ($this->request->queryParams);
@@ -91,10 +89,39 @@ class SiteController extends Controller
             return $this->render('ingredientes', [
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,]);
+    }
 
+    /**
+     * Muestra las fichas detallada de un ingrediente
+     *
+     * @return string
+     */
+    public function actionVeringrediente()
+    {
+        $titulo="Ficha detalle de Ingrediente";
+        $searchModel = new IngredienteSearch();
+
+        if (isset($_GET["id"]))
+        {
+            $dataProvider = $searchModel->searchID($this->request->queryParams);
+            return $this->render('fichadetalleingrediente', [
+                'titulo' => $titulo,
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+        }
+        else
+        {
+            $dataProvider = $searchModel->search($this->request->queryParams);
+            return $this->render('fichadetalleingrediente', [
+                'titulo' => $titulo,
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+        }
 
 
     }
+
+
 
     /**
      * Login action.
