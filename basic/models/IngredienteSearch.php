@@ -5,12 +5,15 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Ingrediente;
+use yii\widgets\LinkPager;
 
 /**
  * IngredienteSearch represents the model behind the search form of `app\models\Ingrediente`.
  */
 class IngredienteSearch extends Ingrediente
 {
+    public $q;
+
     /**
      * {@inheritdoc}
      */
@@ -18,7 +21,7 @@ class IngredienteSearch extends Ingrediente
     {
         return [
             [['id'], 'integer'],
-            [['nombre', 'descripcion', 'datos_nutricion'], 'safe'],
+            [['nombre','q' ,'descripcion', 'datos_nutricion'], 'safe'],
         ];
     }
 
@@ -46,6 +49,9 @@ class IngredienteSearch extends Ingrediente
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination'=> [
+                'pageSize'=>6
+            ]
         ]);
 
         $this->load($params);
@@ -64,6 +70,35 @@ class IngredienteSearch extends Ingrediente
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'descripcion', $this->descripcion])
             ->andFilterWhere(['like', 'datos_nutricion', $this->datos_nutricion]);
+
+        return $dataProvider;
+    }
+
+    public function searchQ($params)
+    {
+        $query = Ingrediente::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination'=> [
+                'pageSize'=>6
+            ]
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->orFilterWhere(['like', 'nombre', $this->q])
+            ->orFilterWhere(['like', 'descripcion', $this->q])
+            ->orFilterWhere(['like', 'id', $this->q])
+            ->orFilterWhere(['like', 'datos_nutricion', $this->q]);
 
         return $dataProvider;
     }
