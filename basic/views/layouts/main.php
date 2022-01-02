@@ -22,7 +22,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100 " style="background-color: rgba(209,245,228,0.53);">
 <?php $this->beginBody() ?>
 
 <header>
@@ -113,10 +113,9 @@ AppAsset::register($this);
     </div>
 </main>
 
-<footer class="footer mt-auto py-3 text-muted">
+<footer class="footer mt-auto py-3 btn-verde" >
     <div class="container">
         <p class="text-center">&copy; Daw2 -- 4ºGIISI -- USAL  <?= date('Y') ?></p>
-        <p class="float-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
 
