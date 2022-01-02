@@ -3,16 +3,16 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Ingrediente */
+/* @var $model app\models\RecetaPaso */
 
-$this->title = Yii::t('app', 'Actualizar Ingrediente: {name}', [
+$this->title = Yii::t('app', 'Update Receta Paso: {name}', [
     'name' => $model->id,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Ingredientes'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Receta Pasos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Actualizar');
+$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
-<div class="ingrediente-update">
+<div class="receta-paso-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

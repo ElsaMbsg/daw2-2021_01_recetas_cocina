@@ -3,12 +3,19 @@
 namespace app\controllers;
 
 use Yii;
+use yii\data\ActiveDataProvider;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Ingrediente;
+use app\models\IngredienteSearch;
+use app\helpers\Html;
+
+
 
 class SiteController extends Controller
 {
@@ -62,6 +69,31 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    /**
+     * Muestra las fichas de los ingredientes de forma paginada
+     *
+     * @return string
+     */
+    public function actionVeringredientes()
+    {
+
+
+            $searchModel = new IngredienteSearch();
+            if (isset($_GET["IngredienteSearch"]["q"])) {
+                $dataProvider = $searchModel->searchQ($this->request->queryParams);
+            }
+            else {
+                $dataProvider = $searchModel->search($this->request->queryParams);
+            }
+
+            return $this->render('ingredientes', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+
+
+
     }
 
     /**

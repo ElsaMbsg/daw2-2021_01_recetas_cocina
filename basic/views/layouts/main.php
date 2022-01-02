@@ -28,12 +28,14 @@ AppAsset::register($this);
 <header>
     <?php
     NavBar::begin([
-        'brandLabel' => 'Aplicación de Recetas',
+        'brandLabel' => Html::img('@web/images/logo.png', ['alt' => Yii::$app->name="Aplicación de recetas", 'style' => 'height: 2rem; width: auto; top: 15px; left: 50px; position: absolute;']),
+        //'brandLabel' => 'Aplicación de Recetas',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav ms-auto'],
         'items' => [
@@ -47,12 +49,11 @@ AppAsset::register($this);
                 [
                     'label' => 'Catalogo',
                     'items' => [
-                        ['label' => 'Ingredientes', 'url' => ['#']],
-                        ['label' => 'Recetas', 'url' => '#'],
-                        ['label' => 'Menus', 'url' => '#'],
-                        ['label' => 'Usuarios', 'url' => '#'],
-                        ['label' => 'Menus', 'url' => '#'],
-                        ['label' => 'Tiendas', 'url' => '#'],
+                        ['label' => 'Ingredientes', 'url' => ['/site/veringredientes']],
+                        ['label' => 'Recetas', 'url' => ['/site/verrecetas']],
+                        ['label' => 'Menus', 'url' => ['/site/vermenus']],
+                        ['label' => 'Tiendas', 'url' => ['/site/vertiendas']],
+                        ['label' => '...', 'url' => '#'],
                     ],
                 ]
                 
@@ -66,10 +67,13 @@ AppAsset::register($this);
                          ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
                          ['label' => 'Recetas-Ingredientes', 'url' => ['/recetaingrediente/index']],
                          ['label' => 'Recetas', 'url' => ['/receta/index']],
-                         ['label' => 'Menu-Receta', 'url' => ['/menureceta/index']],
-                         ['label' => 'Planificacion Menus', 'url' => ['/planificacionmenu/index']],
+                         ['label' => 'Menus-Recetas', 'url' => ['/menureceta/index']],
+                         ['label' => 'Planificaciones Menus', 'url' => ['/planificacionmenu/index']],
+                         ['label' => 'Planificaciones', 'url' => ['/planificacion/index']],
                          ['label' => 'Menus', 'url' => ['/menu/index']],
-                         ['label' => 'Tiendas', 'url' => '#'],
+                         ['label' => 'Tiendas', 'url' => ['/tienda/index']],
+                         ['label' => 'Tiendas-Ofertas', 'url' => ['/tiendaoferta/index']],
+                         ['label' => 'Usuarios', 'url' => ['/usuario/index']],
                     ],
                 ]
            
@@ -80,11 +84,9 @@ AppAsset::register($this);
             Yii::$app->user->isGuest ? 
             (
                 ['label' => 'Login', 'url' => ['/site/login']]
-                
             ) 
             : 
             (
-                
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
                 . Html::submitButton(
@@ -93,9 +95,6 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-                
-           
-    
             )
 
         ],
