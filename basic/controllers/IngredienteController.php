@@ -38,7 +38,12 @@ class IngredienteController extends Controller
     public function actionIndex()
     {
         $searchModel = new IngredienteSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        if (isset($_GET["IngredienteSearch"]["q"])) {
+            $dataProvider = $searchModel->searchQ($this->request->queryParams);
+        }
+        else {
+            $dataProvider = $searchModel->search($this->request->queryParams);
+        }
 
         return $this->render('index', [
             'searchModel' => $searchModel,

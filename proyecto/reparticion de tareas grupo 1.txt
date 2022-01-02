@@ -42,6 +42,7 @@ T3 → Parte pública de visualización de Arbol de Categorias (Clasificaciones)
 Pack 4
 -----------------
 F4 → Mantenimiento de Ingredientes, Mantenimiento de Ingredientes en Recetas.
+T7 -> Parte pública de visualización de Ingredientes.
 F5 → Mantenimiento de Menús, Platos en el menú, y Planificaciones de Menús.
 T5 → Parte pública de visualización de Planificaciones de Menús, Menús y Platos.
 -----------------
