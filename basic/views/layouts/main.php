@@ -35,69 +35,61 @@ AppAsset::register($this);
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
+    $navItem=[
+        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => 'Contact', 'url' => ['/site/contact']],
+        
+        
+        Yii::$app->user->isGuest ? 
+        (
+            [
+                'label' => 'Catalogo',
+                'items' => [
+                    ['label' => 'Ingredientes', 'url' => ['/site/veringredientes']],
+                    ['label' => 'Recetas', 'url' => ['/site/verrecetas']],
+                    ['label' => 'Menus', 'url' => ['/site/vermenus']],
+                    ['label' => 'Tiendas', 'url' => ['/site/vertiendas']],
+                    ['label' => '...', 'url' => '#'],
+                ],
+            ]
+            
+        ) 
+        : 
+        (
+            
+            [
+                'label' => 'Mantenimiento',
+                'items' => [
+                     ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
+                     ['label' => 'Recetas-Ingredientes', 'url' => ['/recetaingrediente/index']],
+                     ['label' => 'Recetas', 'url' => ['/receta/index']],
+                     ['label' => 'Menus-Recetas', 'url' => ['/menureceta/index']],
+                     ['label' => 'Planificaciones Menus', 'url' => ['/planificacionmenu/index']],
+                     ['label' => 'Planificaciones', 'url' => ['/planificacion/index']],
+                     ['label' => 'Menus', 'url' => ['/menu/index']],
+                     ['label' => 'Tiendas', 'url' => ['/tienda/index']],
+                     ['label' => 'Tiendas-Ofertas', 'url' => ['/tiendaoferta/index']],
+                     ['label' => 'Usuarios', 'url' => ['/usuario/index']],
+                ],
+            ]
+       
 
+        )
+        ,
+    ];
+       if(Yii::$app->user->isGuest){
+        
+            array_push($navItem, ['label' => 'Login', 'url' => ['/site/login']], ['label' => 'Registro', 'url' => ['/site/register']]);
+        }
+        else{
+            array_push($navItem,'<li>'. Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline']). Html::submitButton('Logout (' . Yii::$app->user->identity->nombre . ')',['class' => 'btn btn-link logout']). Html::endForm(). '</li>');
+            }
+
+            
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav ms-auto'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            
-            
-            Yii::$app->user->isGuest ? 
-            (
-                [
-                    'label' => 'Catalogo',
-                    'items' => [
-                        ['label' => 'Ingredientes', 'url' => ['/site/veringredientes']],
-                        ['label' => 'Recetas', 'url' => ['/site/verrecetas']],
-                        ['label' => 'Menus', 'url' => ['/site/vermenus']],
-                        ['label' => 'Tiendas', 'url' => ['/site/vertiendas']],
-                        ['label' => '...', 'url' => '#'],
-                    ],
-                ]
-                
-            ) 
-            : 
-            (
-                
-                [
-                    'label' => 'Mantenimiento',
-                    'items' => [
-                         ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
-                         ['label' => 'Recetas-Ingredientes', 'url' => ['/recetaingrediente/index']],
-                         ['label' => 'Recetas', 'url' => ['/receta/index']],
-                         ['label' => 'Menus-Recetas', 'url' => ['/menureceta/index']],
-                         ['label' => 'Planificaciones Menus', 'url' => ['/planificacionmenu/index']],
-                         ['label' => 'Planificaciones', 'url' => ['/planificacion/index']],
-                         ['label' => 'Menus', 'url' => ['/menu/index']],
-                         ['label' => 'Tiendas', 'url' => ['/tienda/index']],
-                         ['label' => 'Tiendas-Ofertas', 'url' => ['/tiendaoferta/index']],
-                         ['label' => 'Usuarios', 'url' => ['/usuario/index']],
-                    ],
-                ]
-           
-    
-            )
-            ,
-
-            Yii::$app->user->isGuest ? 
-            (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) 
-            : 
-            (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->nombre . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-
-        ],
+        'items' => $navItem
     ]);
     NavBar::end();
     ?>

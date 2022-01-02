@@ -14,6 +14,7 @@ use app\models\ContactForm;
 use app\models\Ingrediente;
 use app\models\IngredienteSearch;
 use app\helpers\Html;
+use app\models\Usuario;
 
 
 
@@ -184,4 +185,34 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionRegister()
+{
+    $model = new Usuario();
+
+    if ($model->load(Yii::$app->request->post())) {
+        if ($model->validate()) {
+            // form inputs are valid, do something here
+
+            
+            $model->email= $_POST['Usuario']['email'];
+            $model->password= hash("sha1", $_POST['Usuario']['password']);
+            $model->nombre= $_POST['Usuario']['nombre'];
+            $model->rol= "C";
+            $model->aceptado= 0;
+            $model->creado= date("Y-m-d H:i:s");
+            
+            if($model->save()){
+                return $this->redirect(['login']);
+            }
+
+
+            return;
+        }
+    }
+
+    return $this->render('register', [
+        'model' => $model,
+    ]);
+}
 }
