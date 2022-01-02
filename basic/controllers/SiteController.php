@@ -9,6 +9,11 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Ingrediente;
+use app\models\IngredienteSearch;
+use app\helpers\Html;
+
+
 
 class SiteController extends Controller
 {
@@ -62,6 +67,22 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    /**
+     * Muestra las fichas de los ingredientes de forma paginada
+     *
+     * @return string
+     */
+    public function actionVeringredientes()
+    {
+        $datos= new Ingrediente;
+        $model=$datos->find()->all();
+
+        return $this->render('ingredientes', [
+            'model' => $model,
+        ]);
+
     }
 
     /**
