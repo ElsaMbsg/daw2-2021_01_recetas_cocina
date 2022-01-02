@@ -13,6 +13,9 @@ $this->title = 'Aplicación Web de recetas';
 <div class="site-index">
 
     <div class="jumbotron text-center bg-transparent">
+        <div class="w-100">
+            <img class="w-25"" src="/daw2-2021_01_recetas_cocina/basic/web/images/grocery.png">
+        </div>
         <h1 class="display-4">Ingredientes</h1>
 
         <p class="lead">A continuacion se muestra los ingredientes disponibles para las recetas:</p>
