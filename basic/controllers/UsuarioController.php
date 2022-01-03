@@ -139,6 +139,30 @@ class UsuarioController extends Controller
         ]);
     }
 
+    public function actionAceptar($id)
+    {
+        $model = $this->findModel($id);
+        $pass = $model->password;
+/*         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } */
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            if ($model->validate()) {
+
+
+                if($model->save()){
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+    
+    
+                return;
+            }
+        }        
+
+        return $this->render('aceptar', [
+            'model' => $model,
+        ]);
+    }
     /**
      * Deletes an existing Usuario model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
