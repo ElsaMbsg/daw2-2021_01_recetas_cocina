@@ -20,7 +20,10 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php echo $this->render('_searchGlob', ['model' => $searchModel]); ?>
-
+    <?php echo "<details class='my-3'><summary>Búsqueda Avanzada</summary>";
+    echo $this->render('_search', ['model' => $searchModel]);
+    echo "</details>";
+    ?>
 
     <?=
         GridView::widget([

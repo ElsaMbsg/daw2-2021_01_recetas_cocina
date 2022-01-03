@@ -8,20 +8,15 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="ingrediente-search">
+<div class="tienda-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'q')->label('')->textInput(['placeholder' => "Busqueda de tiendas"]) ?>
 
-    <?= $form->field($model, 'nombre') ?>
-
-    <?= $form->field($model, 'descripcion') ?>
-
-    <?= $form->field($model, 'datos_nutricion') ?>
 
     <div class="form-group text-center my-2">
         <?= Html::submitButton(Yii::t('app', 'Buscar'), ['class' => 'btn btn-primary']) ?>
