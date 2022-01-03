@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use app\models\Tienda;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -25,10 +27,51 @@ $this->title = 'Aplicación Web de recetas';
             <?php $form = ActiveForm::begin([
                 'action' => ['vertiendas'],
                 'method' => 'get',
-            ]); ?>
+            ]);
+
+            echo "<details class='my-3 btn btn-verde w-100'><summary>Búsqueda Global</summary>";
+            ?>
 
             <?= $form->field($searchModel, 'q')->textInput(['placeholder' => "Busqueda de tiendas", "value"])->label('') ?>
-            <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary my-3']) ?>
+            <div class="form-group">
+                <?= Html::submitButton(Yii::t('app', 'Buscar'), ['class' => 'btn btn-primary  my-3 ']) ?>
+            </div>
+
+            <?php
+            echo "</details>";
+            ?>
+
+            <?php ActiveForm::end(); ?>
+
+            <?php
+
+            $form = ActiveForm::begin([
+                'action' => ['vertiendas'],
+                'method' => 'get',
+            ]);
+
+            echo "<details class='my-3 btn btn-verde w-100'><summary>Búsqueda por población</summary>";
+
+            $tiendas=Tienda::find()->all();
+
+            //use yii\helpers\ArrayHelper;
+            $listTiendas=ArrayHelper::map($tiendas,'poblacion', 'poblacion', 'provincia');
+
+            echo $form->field($searchModel, 'pob')->dropDownList(
+            $listTiendas,
+            ['prompt'=>'Seleccione una tienda...']
+            )->label('');?>
+
+            <div class="form-group">
+                <?= Html::submitButton(Yii::t('app', 'Buscar'), ['class' => 'btn btn-primary my-3 ']) ?>
+            </div>
+
+            <?php
+            echo "</details>";
+            ?>
+
+
+
 
             <?php ActiveForm::end(); ?>
 
@@ -46,7 +89,7 @@ $this->title = 'Aplicación Web de recetas';
                 if ($card->visible==1 && $card->activa==1){?>
 
             <div class="card col-lg-4 my-3 text-center">
-                <h2 class="text-center"><?php echo $card->id; echo ". "; echo $card->nombre ?></h2>
+                <h2 class="text-center"><?php echo $card->nombre ?></h2>
 
                 <p><?php echo $card->domicilio;?></p>
                 <p><?php echo $card->poblacion;?></p>

@@ -87,7 +87,12 @@ class SiteController extends Controller
             if (isset($_GET["IngredienteSearch"]["q"])) {
                 $dataProvider = $searchModel->searchQ($this->request->queryParams);
             }
-            else {
+            elseif (isset($_GET["IngredienteSearch"]["tipo"]))
+            {
+                $dataProvider = $searchModel->searchTipo($this->request->queryParams);
+            }
+            else
+            {
                 $dataProvider = $searchModel->search($this->request->queryParams);
             }
 
@@ -136,6 +141,9 @@ class SiteController extends Controller
         $searchModel = new TiendaSearch();
         if (isset($_GET["TiendaSearch"]["q"])) {
             $dataProvider = $searchModel->searchQ($this->request->queryParams);
+        }
+        elseif (isset($_GET["TiendaSearch"]["pob"])) {
+            $dataProvider = $searchModel->searchPob($this->request->queryParams);
         }
         else {
             $dataProvider = $searchModel->search($this->request->queryParams);
@@ -190,6 +198,10 @@ class SiteController extends Controller
             elseif (isset($_GET["TiendaofertaSearch"]["idq"]))
             {
                 $dataProvider = $searchModel->search($this->request->queryParams);
+            }
+            elseif (isset($_GET["TiendaofertaSearch"]["tipo"]))
+            {
+                $dataProvider = $searchModel->searchTipo($this->request->queryParams);
             }
 
             return $this->render('tiendaofertas', [

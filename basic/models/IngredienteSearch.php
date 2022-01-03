@@ -13,7 +13,7 @@ use yii\widgets\LinkPager;
 class IngredienteSearch extends Ingrediente
 {
     public $q;
-
+    public $tipo;
 
     /**
      * {@inheritdoc}
@@ -22,7 +22,7 @@ class IngredienteSearch extends Ingrediente
     {
         return [
             [['id'], 'integer'],
-            [['nombre','q' ,'descripcion', 'datos_nutricion'], 'safe'],
+            [['nombre','q' ,'tipo' ,'descripcion', 'datos_nutricion'], 'safe'],
         ];
     }
 
@@ -71,6 +71,40 @@ class IngredienteSearch extends Ingrediente
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'descripcion', $this->descripcion])
             ->andFilterWhere(['like', 'datos_nutricion', $this->datos_nutricion]);
+
+        return $dataProvider;
+    }
+
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function searchTipo($params)
+    {
+        $query = Ingrediente::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination'=> [
+                'pageSize'=>6
+            ]
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+
+        $query->andFilterWhere(['like', 'descripcion', $this->tipo]);
 
         return $dataProvider;
     }
