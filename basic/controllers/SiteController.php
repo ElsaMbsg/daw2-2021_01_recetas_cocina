@@ -14,6 +14,8 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Ingrediente;
 use app\models\IngredienteSearch;
+use app\models\receta;
+use app\models\RecetaSearch;
 use app\helpers\Html;
 use app\models\Usuario;
 
@@ -165,6 +167,57 @@ class SiteController extends Controller
         {
             $dataProvider = $searchModel->search($this->request->queryParams);
             return $this->render('fichadetalletienda', [
+                'titulo' => $titulo,
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+        }
+
+
+    }
+
+
+        /**
+     * Muestra las fichas de las recetas de forma paginada
+     *
+     * @return string
+     */
+    public function actionVerrecetas()
+    {
+            $searchModel = new RecetaSearch();
+            if (isset($_GET["RecetaSearch"]["q"])) {
+                $dataProvider = $searchModel->searchQ($this->request->queryParams);
+            }
+            else {
+                $dataProvider = $searchModel->search($this->request->queryParams);
+            }
+
+            return $this->render('Recetas', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+    }
+
+    /**
+     * Muestra las fichas detallada de una receta
+     *
+     * @return string
+     */
+    public function actionVerreceta()
+    {
+        $titulo="Ficha detalle de Receta";
+        $searchModel = new RecetaSearch();
+
+        if (isset($_GET["id"]))
+        {
+            $dataProvider = $searchModel->searchID($this->request->queryParams);
+            return $this->render('fichadetallereceta', [
+                'titulo' => $titulo,
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+        }
+        else
+        {
+            $dataProvider = $searchModel->search($this->request->queryParams);
+            return $this->render('fichadetallereceta', [
                 'titulo' => $titulo,
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,]);

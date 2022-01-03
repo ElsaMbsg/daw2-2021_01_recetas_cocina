@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\RecetaPasoImagenSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Receta Paso Imagens';
+$this->title = 'Receta Paso Imagenes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="receta-paso-imagen-index">

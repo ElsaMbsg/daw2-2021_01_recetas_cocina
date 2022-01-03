@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\RecetaPasoImagen */
 
 $this->title = 'Create Receta Paso Imagen';
-$this->params['breadcrumbs'][] = ['label' => 'Receta Paso Imagens', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Receta Paso Imagenes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="receta-paso-imagen-create">

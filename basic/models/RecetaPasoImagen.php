@@ -49,10 +49,10 @@ class RecetaPasoImagen extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return RecetaPasoImagenesQuery the active query used by this AR class.
+     * @return RecetaPasoImagenQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new RecetaPasoImagenesQuery(get_called_class());
+        return new RecetaPasoImagenQuery(get_called_class());
     }
 }

@@ -7,7 +7,7 @@ namespace app\models;
  *
  * @see RecetaPasoImagen
  */
-class RecetaPasoImagenesQuery extends \yii\db\ActiveQuery
+class RecetaPasoImagenQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
