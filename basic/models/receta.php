@@ -18,7 +18,7 @@ use Yii;
  * @property int|null $usuario_id Usuario que ha creado la receta o CERO si no existe (como si fuera NULL).
  * @property int|null $aceptada Indicador de receta aceptada o no.
  */
-class receta extends \yii\db\ActiveRecord
+class Receta extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

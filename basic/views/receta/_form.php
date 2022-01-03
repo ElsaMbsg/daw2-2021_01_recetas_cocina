@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\receta */
+/* @var $model app\models\Receta */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="receta-form">
+<div class="Receta-form">
 
     <?php $form = ActiveForm::begin(); ?>
 

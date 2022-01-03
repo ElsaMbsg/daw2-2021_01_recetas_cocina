@@ -4,13 +4,13 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\receta;
+use app\models\Receta;
 use yii\widgets\LinkPager;
 
 /**
- * RecetaSearch represents the model behind the search form of `app\models\receta`.
+ * RecetaSearch represents the model behind the search form of `app\models\Receta`.
  */
-class RecetaSearch extends receta
+class RecetaSearch extends Receta
 {
     public $q;
     /**
@@ -42,7 +42,7 @@ class RecetaSearch extends receta
      */
     public function search($params)
     {
-        $query = receta::find();
+        $query = Receta::find();
 
         // add conditions that should always apply here
 
@@ -82,7 +82,7 @@ class RecetaSearch extends receta
 
     public function searchQ($params)
     {
-        $query = receta::find();
+        $query = Receta::find();
 
         // add conditions that should always apply here
 
@@ -108,7 +108,7 @@ class RecetaSearch extends receta
 
     public function searchID($params)
     {
-        $query = receta::find();
+        $query = Receta::find();
 
         // add conditions that should always apply here
 

@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Receta Pasos');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="receta-paso-index">
+<div class="Receta-paso-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

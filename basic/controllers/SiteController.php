@@ -14,7 +14,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Ingrediente;
 use app\models\IngredienteSearch;
-use app\models\receta;
+use app\models\Receta;
 use app\models\RecetaSearch;
 use app\helpers\Html;
 use app\models\Usuario;
@@ -197,7 +197,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Muestra las fichas detallada de una receta
+     * Muestra las fichas detallada de una Receta
      *
      * @return string
      */

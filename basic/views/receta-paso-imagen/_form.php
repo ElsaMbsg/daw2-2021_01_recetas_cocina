@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="receta-paso-imagen-form">
+<div class="Receta-paso-imagen-form">
 
     <?php $form = ActiveForm::begin(); ?>
 

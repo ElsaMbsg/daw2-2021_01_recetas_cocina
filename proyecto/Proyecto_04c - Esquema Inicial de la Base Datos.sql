@@ -29,11 +29,11 @@ CREATE TABLE IF NOT EXISTS `daw2_recetas`.`recetas` (
   `descripcion` TEXT NULL,
   `tipo_plato` CHAR(1) NOT NULL COMMENT 'Tipo Plato E=Entrantes, 1=Primeros, 2=Segundos, P=Postres, ...',
   `dificultad` TINYINT(2) NOT NULL DEFAULT 0 COMMENT '1=Muy Facil,5=Muy Dificil.',
-  `comensales` TINYINT(2) NOT NULL DEFAULT 4 COMMENT 'Numero de comensales para la receta.',
-  `tiempo_elaboracion` SMALLINT(4) NOT NULL DEFAULT 0 COMMENT 'Tiempo en Minutos de elaboracion de la receta.',
-  `valoracion` TINYINT(2) NOT NULL DEFAULT 3 COMMENT 'Valoracion de la receta: 1=Peor, 3=Buena, 5=Mejor.',
-  `usuario_id` INT(12) UNSIGNED NULL DEFAULT 0 COMMENT 'Usuario que ha creado la receta o CERO si no existe (como si fuera NULL).',
-  `aceptada` TINYINT(1) NULL COMMENT 'Indicador de receta aceptada o no.',
+  `comensales` TINYINT(2) NOT NULL DEFAULT 4 COMMENT 'Numero de comensales para la Receta.',
+  `tiempo_elaboracion` SMALLINT(4) NOT NULL DEFAULT 0 COMMENT 'Tiempo en Minutos de elaboracion de la Receta.',
+  `valoracion` TINYINT(2) NOT NULL DEFAULT 3 COMMENT 'Valoracion de la Receta: 1=Peor, 3=Buena, 5=Mejor.',
+  `usuario_id` INT(12) UNSIGNED NULL DEFAULT 0 COMMENT 'Usuario que ha creado la Receta o CERO si no existe (como si fuera NULL).',
+  `aceptada` TINYINT(1) NULL COMMENT 'Indicador de Receta aceptada o no.',
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

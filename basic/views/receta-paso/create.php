@@ -9,7 +9,7 @@ $this->title = Yii::t('app', 'Create Receta Paso');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Receta Pasos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="receta-paso-create">
+<div class="Receta-paso-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

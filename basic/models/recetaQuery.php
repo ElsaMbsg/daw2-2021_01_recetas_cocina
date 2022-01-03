@@ -3,9 +3,9 @@
 namespace app\models;
 
 /**
- * This is the ActiveQuery class for [[receta]].
+ * This is the ActiveQuery class for [[Receta]].
  *
- * @see receta
+ * @see Receta
  */
 class recetaQuery extends \yii\db\ActiveQuery
 {
@@ -16,7 +16,7 @@ class recetaQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return receta[]|array
+     * @return Receta[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class recetaQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return receta|array|null
+     * @return Receta|array|null
      */
     public function one($db = null)
     {

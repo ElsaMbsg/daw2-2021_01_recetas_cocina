@@ -9,7 +9,7 @@ $this->title = 'Create Receta Paso Imagen';
 $this->params['breadcrumbs'][] = ['label' => 'Receta Paso Imagenes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="receta-paso-imagen-create">
+<div class="Receta-paso-imagen-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

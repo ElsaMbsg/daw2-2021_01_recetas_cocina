@@ -62,7 +62,7 @@ FTI2 - Filtros clasificacion recetas recomendadas (del mes, de la semana...):
     -Boton filtrar en los filtros de busqueda.
     -Filtros de busqueda
 
-FTI3 - Ficha detalle de receta:
+FTI3 - Ficha detalle de Receta:
     -Boton marcha atras con almacenamiento de opciones y filtrado en sesion
 
 

@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Receta Paso Imagenes', 'url' => ['
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="receta-paso-imagen-view">
+<div class="Receta-paso-imagen-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

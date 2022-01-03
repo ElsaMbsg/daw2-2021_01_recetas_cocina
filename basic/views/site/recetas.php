@@ -20,7 +20,7 @@ $this->title = 'Aplicación Web de recetas';
 
         <p class="lead">A continuacion se muestra los recetas disponibles:</p>
 
-        <div class="receta-search">
+        <div class="Receta-search">
 
             <?php $form = ActiveForm::begin([
                 'action' => ['verrecetas'],
