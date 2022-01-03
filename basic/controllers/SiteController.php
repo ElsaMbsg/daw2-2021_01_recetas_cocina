@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\TiendaofertaSearch;
 use app\models\TiendaSearch;
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -172,6 +173,58 @@ class SiteController extends Controller
                 'dataProvider' => $dataProvider,]);
         }
 
+    }
+
+    /**
+     * Muestra las fichas de los tiendas de forma paginada
+     *
+     * @return string
+     */
+    public function actionVertiendaofertas()
+    {
+
+            $searchModel = new TiendaofertaSearch();
+            if (isset($_GET["TiendaofertaSearch"]["q"])) {
+                $dataProvider = $searchModel->searchQ($this->request->queryParams);
+            }
+            elseif (isset($_GET["TiendaofertaSearch"]["idq"]))
+            {
+                $dataProvider = $searchModel->search($this->request->queryParams);
+            }
+
+            return $this->render('tiendaofertas', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+
+
+    }
+
+    /**
+     * Muestra las fichas detallada de un ingrediente
+     *
+     * @return string
+     */
+    public function actionVertiendaoferta()
+    {
+        $titulo="Ficha detalle de la Oferta";
+        $searchModel = new TiendaofertaSearch();
+
+        if (isset($_GET["id"]))
+        {
+            $dataProvider = $searchModel->searchID($this->request->queryParams);
+            return $this->render('fichadetalletiendaoferta', [
+                'titulo' => $titulo,
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+        }
+        else
+        {
+            $dataProvider = $searchModel->search($this->request->queryParams);
+            return $this->render('fichadetalletiendaoferta', [
+                'titulo' => $titulo,
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+        }
 
     }
 
