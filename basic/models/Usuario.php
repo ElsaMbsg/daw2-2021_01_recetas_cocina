@@ -132,5 +132,12 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return $this->password === hash("sha1", $password);
        // return \Yii::$app->security->validatePassword($password,$this->password);
     }
-
+    /**
+     * {@inheritdoc}
+     * @return UsuarioQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new UsuarioQuery(get_called_class());
+    }
 }

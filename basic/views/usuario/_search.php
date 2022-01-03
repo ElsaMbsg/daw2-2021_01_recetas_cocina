@@ -25,9 +25,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'rol') ?>
 
-    <?php // echo $form->field($model, 'aceptado') ?>
+    <?php  echo $form->field($model, 'aceptado') ?>
 
-    <?php // echo $form->field($model, 'creado') ?>
+    <?php  echo $form->field($model, 'creado') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
