@@ -38,7 +38,13 @@ class RecetaController extends Controller
     public function actionIndex()
     {
         $searchModel = new RecetaSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        if (isset($_GET["RecetaSearch"]["q"])) {
+            $dataProvider = $searchModel->searchQ($this->request->queryParams);
+        }
+        else
+        {
+            $dataProvider = $searchModel->search($this->request->queryParams);
+        }
 
         return $this->render('index', [
             'searchModel' => $searchModel,
