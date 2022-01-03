@@ -27,8 +27,49 @@ $this->title = 'Aplicación Web de recetas';
                 'method' => 'get',
             ]); ?>
 
+            <?php echo "<details class='my-3 btn btn-verde w-100'><summary>Búsqueda Global</summary>";?>
+
+
             <?= $form->field($searchModel, 'q')->textInput(['placeholder' => "Busqueda de ofertas de la tienda", "value"])->label('') ?>
             <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary my-3']) ?>
+
+
+            <?php
+            echo "</details>";
+            ?>
+
+            <?php ActiveForm::end(); ?>
+
+
+            <?php $form = ActiveForm::begin([
+                'action' => ['vertiendaofertas'],
+                'method' => 'get',
+            ]); ?>
+
+
+            <?php echo "<details class='my-3 btn btn-verde w-100'><summary>Búsqueda por tipo de Oferta-Ingrediente</summary>";?>
+
+            <?= $form->field($searchModel, 'tipo')->dropDownList([
+                '' => "Seleccione tipo de ingrediente...",
+                'condimento' => 'Tipo Condimento',
+                'vegano' => 'Tipo Vegano',
+                'vegetariano' => 'Tipo Vegetariano',
+                'salsa' => 'Tipo Salsa',
+                'conserva' => 'Tipo Conserva',
+                'bebida' => 'Tipo Bebida',
+                'carne' => 'Tipo Carne',
+                'pescado' => 'Tipo Pescado',
+                'verdura' => 'Tipo Verdura',
+                'pasta' => 'Tipo Pasta',
+                'legumbre' => 'Tipo Legumbre',
+
+            ])->label("") ?>
+            <?= Html::submitButton('Buscar Tipo Oferta', ['class' => 'btn btn-primary my-3']) ?>
+
+
+            <?php
+            echo "</details>";
+            ?>
 
             <?php ActiveForm::end(); ?>
 
@@ -46,7 +87,7 @@ $this->title = 'Aplicación Web de recetas';
                 //if ($card->tienda_id==$_GET['idtienda']){?>
 
             <div class="card col-lg-4 my-3 text-center">
-                <h2 class="text-center"><?php echo $card->id; echo ". "; echo $card->descripcion ?></h2>
+                <h2 class="text-center"><?php  echo $card->descripcion ?></h2>
 
                 <p><?php echo $card->envase;?></p>
                 <p><?php echo $card->cantidad;echo $card->medida;?></p>

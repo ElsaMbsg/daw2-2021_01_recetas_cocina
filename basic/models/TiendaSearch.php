@@ -13,6 +13,7 @@ use yii\widgets\LinkPager;
 class TiendaSearch extends Tienda
 {
     public $q;
+    public $pob;
 
 
     /**
@@ -22,7 +23,7 @@ class TiendaSearch extends Tienda
     {
         return [
             [['id', 'usuario_id', 'activa', 'visible'], 'integer'],
-            [['nombre','q','domicilio', 'poblacion', 'provincia'], 'safe'],
+            [['nombre','q','pob','domicilio', 'poblacion', 'provincia'], 'safe'],
         ];
     }
 
@@ -75,6 +76,40 @@ class TiendaSearch extends Tienda
             ->andFilterWhere(['like', 'domicilio', $this->domicilio])
             ->andFilterWhere(['like', 'poblacion', $this->poblacion])
             ->andFilterWhere(['like', 'provincia', $this->provincia]);
+
+        return $dataProvider;
+    }
+
+
+    /**
+     * Creates data provider instance with poblation filter
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function searchPob($params)
+    {
+        $query = Tienda::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination'=> [
+                'pageSize'=>6
+            ]
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere(['like', 'poblacion', $this->pob]);
 
         return $dataProvider;
     }
