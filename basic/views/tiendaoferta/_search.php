@@ -25,13 +25,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'envase') ?>
 
-    <?php // echo $form->field($model, 'cantidad') ?>
+    <?php  echo $form->field($model, 'cantidad') ?>
 
-    <?php // echo $form->field($model, 'medida') ?>
+    <?php  echo $form->field($model, 'medida') ?>
 
-    <?php // echo $form->field($model, 'notas') ?>
+    <?php  echo $form->field($model, 'notas') ?>
 
-    <div class="form-group">
+    <div class="form-group text-center my-2 ">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-outline-secondary']) ?>
     </div>
