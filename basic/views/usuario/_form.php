@@ -18,11 +18,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'rol')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'rol')->dropDownList([
+        "C" => 'Colaborador',
+        "A" => 'Administrador',
+        "T" => 'Tienda',
+        "S" => 'Sistema',
+    ])->label("Rol") ?>
 
-    <?= $form->field($model, 'aceptado')->textInput() ?>
+    <?= $form->field($model, 'aceptado')->dropDownList([
+        0 => 'Pendiente',
+        1 => 'Aceptado',
+        2 => 'No aceptado',
+    ])->label("Aceptado") ?>
 
-    <?= $form->field($model, 'creado')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
