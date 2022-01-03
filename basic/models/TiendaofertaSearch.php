@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Tiendaoferta;
@@ -12,6 +13,7 @@ use app\models\Tiendaoferta;
 class TiendaofertaSearch extends Tiendaoferta
 {
     public $q;
+    public $idq;
 
     /**
      * {@inheritdoc}
@@ -43,7 +45,10 @@ class TiendaofertaSearch extends Tiendaoferta
      */
     public function search($params)
     {
+
         $query = Tiendaoferta::find();
+
+        if (isset($_GET["TiendaofertaSearch"]["idq"])) $this->idq= $_GET["TiendaofertaSearch"]["idq"];
 
         // add conditions that should always apply here
 
@@ -64,16 +69,57 @@ class TiendaofertaSearch extends Tiendaoferta
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'tienda_id' => $this->tienda_id,
-            'ingrediente_id' => $this->ingrediente_id,
-            'cantidad' => $this->cantidad,
+            'tienda_id' => $this->idq,
         ]);
 
-        $query->andFilterWhere(['like', 'descripcion', $this->descripcion])
-            ->andFilterWhere(['like', 'envase', $this->envase])
-            ->andFilterWhere(['like', 'medida', $this->medida])
-            ->andFilterWhere(['like', 'notas', $this->notas]);
+        return $dataProvider;
+    }/**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+
+
+    public function searchA($params)
+    {
+
+        $query = Tiendaoferta::find();
+
+
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination'=> [
+                'pageSize'=>6
+            ]
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+         $query->andFilterWhere([
+             'id' => $this->id,
+             'tienda_id' => $this->tienda_id,
+             'ingrediente_id' => $this->ingrediente_id,
+             'cantidad' => $this->cantidad,
+         ]);
+
+         $query->andFilterWhere(['like', 'descripcion', $this->descripcion])
+             ->andFilterWhere(['like', 'envase', $this->envase])
+             ->andFilterWhere(['like', 'medida', $this->medida])
+             ->andFilterWhere(['like', 'notas', $this->notas]);
+
+         
 
         return $dataProvider;
     }
@@ -98,6 +144,11 @@ class TiendaofertaSearch extends Tiendaoferta
             // $query->where('0=1');
             return $dataProvider;
         }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'tienda_id' => $this->idq,
+        ]);
 
         $query->orFilterWhere(['like', 'id', $this->q])
             ->orFilterWhere(['like', 'descripcion', $this->q])

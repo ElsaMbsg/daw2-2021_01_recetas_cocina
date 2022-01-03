@@ -88,6 +88,14 @@ a.desc:after {
     background-color: #C9E0C1;
     color: black;
 }
+
+.btn-verde:hover
+{
+    background-color: #889684;
+    color: black;
+}
+
+
 .table {
     --bs-table-bg: #c9e0c1;
     --bs-table-accent-bg: #c9e0c1;

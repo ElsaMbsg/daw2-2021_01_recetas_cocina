@@ -14,20 +14,20 @@ $this->title = 'Aplicación Web de recetas';
 
     <div class="jumbotron text-center bg-transparent">
         <div class="w-100">
-            <img class="" style="width: 15%" src="/daw2-2021_01_recetas_cocina/basic/web/images/tienda.png">
+            <img class="" style="width: 15%" src="/daw2-2021_01_recetas_cocina/basic/web/images/ofertas.png">
         </div>
-        <h1 class="display-4">Tiendas</h1>
+        <h1 class="display-4">Ofertas <?php if (isset($_GET["nametienda"])) echo $_GET["nametienda"]?></h1>
 
-        <p class="lead">A continuación se muestra las tiendas disponibles :</p>
+        <p class="lead">A continuación se muestra las ofertas y productos disponibles:</p>
 
-        <div class="ingrediente-search">
+        <div class="tiendaoferta-search">
 
             <?php $form = ActiveForm::begin([
-                'action' => ['vertiendas'],
+                'action' => ['vertiendaofertas'],
                 'method' => 'get',
             ]); ?>
 
-            <?= $form->field($searchModel, 'q')->textInput(['placeholder' => "Busqueda de tiendas", "value"])->label('') ?>
+            <?= $form->field($searchModel, 'q')->textInput(['placeholder' => "Busqueda de ofertas de la tienda", "value"])->label('') ?>
             <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary my-3']) ?>
 
             <?php ActiveForm::end(); ?>
@@ -43,22 +43,21 @@ $this->title = 'Aplicación Web de recetas';
             <?php //foreach ($model as $card){ ?>
             <?php foreach ($dataProvider->getModels() as $card)
             {
-                if ($card->visible==1 && $card->activa==1){?>
+                //if ($card->tienda_id==$_GET['idtienda']){?>
 
             <div class="card col-lg-4 my-3 text-center">
-                <h2 class="text-center"><?php echo $card->id; echo ". "; echo $card->nombre ?></h2>
+                <h2 class="text-center"><?php echo $card->id; echo ". "; echo $card->descripcion ?></h2>
 
-                <p><?php echo $card->domicilio;?></p>
-                <p><?php echo $card->poblacion;?></p>
-                <p><?php echo $card->provincia;?></p>
+                <p><?php echo $card->envase;?></p>
+                <p><?php echo $card->cantidad;echo $card->medida;?></p>
+                <p><?php echo $card->notas;?></p>
 
                 <p>
-                    <a class="btn btn-verde" href="?r=site/vertienda&id=<?php echo $card->id?>">Info Tienda</a>
-                    <a class="btn btn-verde" href="?r=site/vertiendaofertas&TiendaofertaSearch%5Bidq%5D=<?php echo $card->id?>&nametienda=<?php echo $card->nombre?>">Ofertas Tienda</a>
+                    <a class="btn btn-verde" href="?r=site/vertiendaoferta&id=<?php echo $card->id?>">Ver oferta</a>
                 </p>
             </div>
 
-            <?php }
+            <?php //}
             }?>
 
 

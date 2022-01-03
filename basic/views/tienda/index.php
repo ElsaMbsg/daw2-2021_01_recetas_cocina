@@ -41,11 +41,27 @@ $this->params['breadcrumbs'][] = $this->title;
             'domicilio',
             'poblacion',
             'provincia',
+
             //'usuario_id',
             //'activa',
             //'visible',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+                'header' => 'Acciones'],
+
+            ['class' => 'yii\grid\ActionColumn',
+                'header' => 'Ofertas',
+                'template' => '{view}',
+
+                'urlCreator' => function ($action, $model, $key, $index)
+                {
+                    if ($action === 'view')
+                    {
+                        $url ='index.php?r=tiendaoferta/index&TiendaofertaSearch%5Bidq%5D='.$model->id.'&nametienda='.$model->nombre;
+                        return $url;
+                    }
+                },
+                ],
         ],
         'layout' => "\n{items}\n",
     ]); ?>
