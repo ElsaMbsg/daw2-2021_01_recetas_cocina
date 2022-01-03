@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\TiendaSearch;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
@@ -122,6 +123,56 @@ class SiteController extends Controller
 
     }
 
+    /**
+     * Muestra las fichas de los tiendas de forma paginada
+     *
+     * @return string
+     */
+    public function actionVertiendas()
+    {
+        $searchModel = new TiendaSearch();
+        if (isset($_GET["TiendaSearch"]["q"])) {
+            $dataProvider = $searchModel->searchQ($this->request->queryParams);
+        }
+        else {
+            $dataProvider = $searchModel->search($this->request->queryParams);
+        }
+
+        return $this->render('tiendas', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,]);
+    }
+
+    /**
+     * Muestra las fichas detallada de un ingrediente
+     *
+     * @return string
+     */
+    public function actionVertienda()
+    {
+        $titulo="Ficha detalle de Tienda";
+        $searchModel = new TiendaSearch();
+
+        if (isset($_GET["id"]))
+        {
+            $dataProvider = $searchModel->searchID($this->request->queryParams);
+            return $this->render('fichadetalletienda', [
+                'titulo' => $titulo,
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+        }
+        else
+        {
+            $dataProvider = $searchModel->search($this->request->queryParams);
+            return $this->render('fichadetalletienda', [
+                'titulo' => $titulo,
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+        }
+
+
+    }
+
 
 
     /**
@@ -215,4 +266,15 @@ class SiteController extends Controller
         'model' => $model,
     ]);
 }
+
+    public function mapa($direccion){
+
+
+        return render('mapa', [
+            'url' => $url,
+            'direccion'=>$direccion,
+        ]);
+
+
+    }
 }
