@@ -5,12 +5,16 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Tienda;
+use yii\widgets\LinkPager;
 
 /**
  * TiendaSearch represents the model behind the search form of `app\models\Tienda`.
  */
 class TiendaSearch extends Tienda
 {
+    public $q;
+
+
     /**
      * {@inheritdoc}
      */
@@ -18,7 +22,7 @@ class TiendaSearch extends Tienda
     {
         return [
             [['id', 'usuario_id', 'activa', 'visible'], 'integer'],
-            [['nombre', 'domicilio', 'poblacion', 'provincia'], 'safe'],
+            [['nombre','q','domicilio', 'poblacion', 'provincia'], 'safe'],
         ];
     }
 
@@ -46,6 +50,9 @@ class TiendaSearch extends Tienda
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination'=> [
+                'pageSize'=>6
+            ]
         ]);
 
         $this->load($params);
@@ -68,6 +75,66 @@ class TiendaSearch extends Tienda
             ->andFilterWhere(['like', 'domicilio', $this->domicilio])
             ->andFilterWhere(['like', 'poblacion', $this->poblacion])
             ->andFilterWhere(['like', 'provincia', $this->provincia]);
+
+        return $dataProvider;
+    }
+
+    public function searchQ($params)
+    {
+        $query = Tienda::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination'=> [
+                'pageSize'=>6
+            ]
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->orFilterWhere(['like', 'id', $this->q])
+            ->orFilterWhere(['like', 'usuario_id', $this->q])
+            ->orFilterWhere(['like', 'activa', $this->q])
+            ->orFilterWhere(['like', 'visible', $this->q])
+            ->orFilterWhere(['like', 'nombre', $this->q])
+            ->orFilterWhere(['like', 'domicilio', $this->q])
+            ->orFilterWhere(['like', 'poblacion', $this->q])
+            ->orFilterWhere(['like', 'provincia', $this->q]);
+
+        return $dataProvider;
+    }
+
+    public function searchID($params)
+    {
+        $query = Tienda::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+        ]);
 
         return $dataProvider;
     }

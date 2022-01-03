@@ -15,7 +15,7 @@ use Yii;
  * @property int $aceptado Indicador de usuario aceptado su registro o no.
  * @property string $creado Fecha y Hora de creacion del usuario
  */
-class Usuario extends \yii\db\ActiveRecord
+class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -31,7 +31,7 @@ class Usuario extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['email', 'password', 'nombre', 'rol', 'aceptado', 'creado'], 'required'],
+            [['email', 'password', 'nombre'], 'required'],
             [['aceptado'], 'integer'],
             [['creado'], 'safe'],
             [['email'], 'string', 'max' => 255],
@@ -58,12 +58,79 @@ class Usuario extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     * @return UsuarioQuery the active query used by this AR class.
-     */
-    public static function find()
+    public function getAuthKey()
     {
-        return new UsuarioQuery(get_called_class());
+        return null;
+        //throw new \yii\base\NotSupportedException("no hay");
     }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function getPass()
+    {
+        return $this->password;
+    }
+
+    public function validateAuthKey($authKey)
+    {
+        throw new \yii\base\NotSupportedException("nadaaaaaaaaaaaa");
+    }
+
+    public static function findIdentity($id)
+    {
+        return self::findOne($id);
+    }
+
+
+
+    public static function findIdentityByAccessToken($token, $type=null)
+    {
+       throw new \yii\base\NotSupportedException();
+    }
+
+    public static function findByUsername($nombre)
+    {
+/*         foreach (self::$users as $user) {
+            if (strcasecmp($user['username'], $username) === 0) {
+                return new static($user);
+            }
+        }
+
+        return null; */
+         $user = self::find()->where(['nombre' => $nombre])->one();
+
+        return $user; 
+           
+    
+                /*
+                $user = self::find()
+                ->where([
+                    "username" => $username
+                ])
+                ->one();
+        if (!count($user)) {
+            return null;
+        } */
+        //$user = self::find()->where(['username' => $username])->one();
+        //return new static($user);
+       // var_dump(self::findOne(1));
+        //return self::findOne(['username'=>$username]);
+
+       // return self::findOne(1);
+    }
+
+
+
+ 
+ 
+    public function validatePassword($password)
+    {
+        //return $this->$password === $password;
+        //return password_verify($password,$this->password);
+        return $this->password === hash("sha1", $password);
+       // return \Yii::$app->security->validatePassword($password,$this->password);
+    }
+
 }

@@ -14,6 +14,7 @@ class IngredienteSearch extends Ingrediente
 {
     public $q;
 
+
     /**
      * {@inheritdoc}
      */
@@ -99,6 +100,33 @@ class IngredienteSearch extends Ingrediente
             ->orFilterWhere(['like', 'descripcion', $this->q])
             ->orFilterWhere(['like', 'id', $this->q])
             ->orFilterWhere(['like', 'datos_nutricion', $this->q]);
+
+        return $dataProvider;
+    }
+
+    public function searchID($params)
+    {
+        $query = Ingrediente::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+        ]);
 
         return $dataProvider;
     }

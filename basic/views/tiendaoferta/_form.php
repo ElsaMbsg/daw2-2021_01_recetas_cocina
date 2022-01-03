@@ -1,7 +1,12 @@
 <?php
 
+use app\models\Ingrediente;
+use app\models\Tienda;
+
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Tiendaoferta */
@@ -12,9 +17,32 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'tienda_id')->textInput() ?>
+    <?php
 
-    <?= $form->field($model, 'ingrediente_id')->textInput() ?>
+    $tiendas=Tienda::find()->all();
+
+    //use yii\helpers\ArrayHelper;
+    $listTiendas=ArrayHelper::map($tiendas,'id','nombre', 'provincia');
+
+    echo $form->field($model, 'tienda_id')->dropDownList(
+        $listTiendas,
+        ['prompt'=>'Seleccione una tienda...']
+    );
+
+    ?>
+
+    <?php
+
+    $ingredientes=Ingrediente::find()->all();
+
+    //use yii\helpers\ArrayHelper;
+    $listIngredientes=ArrayHelper::map($ingredientes,'id','nombre');
+
+    echo $form->field($model, 'ingrediente_id')->dropDownList(
+        $listIngredientes,
+        ['prompt'=>'Seleccione un ingrediente...']
+    );
+    ?>
 
     <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
 
@@ -27,7 +55,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'notas')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('app', 'Actualizar'), ['class' => 'btn btn-verde my-3 w-100']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

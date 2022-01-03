@@ -15,13 +15,8 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'q')->label('')->textInput(['placeholder' => "Busqueda de ingredientes"]) ?>
 
-    <?= $form->field($model, 'nombre') ?>
-
-    <?= $form->field($model, 'descripcion') ?>
-
-    <?= $form->field($model, 'datos_nutricion') ?>
 
     <div class="form-group text-center my-2">
         <?= Html::submitButton(Yii::t('app', 'Buscar'), ['class' => 'btn btn-primary']) ?>

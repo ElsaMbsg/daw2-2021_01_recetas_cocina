@@ -19,7 +19,7 @@ Manu y Pablo    -> 2
 Pack 1
 -----------------
 F1 → Mantenimiento de Usuarios, Perfiles y Relaciones entre ellos, Mantenimiento de la Configuración, y Copias de Seguridad.
-T6 → Parte pública de visualización de Anuncios de Ofertas, Acceso y/o Registro de Usuarios.
+T5 → Parte pública de visualización de Planificaciones de Menús, Menús y Platos.
 F6 → Mantenimiento de Tiendas y Ofertas de Tiendas.
 -----------------
 
@@ -42,8 +42,9 @@ T3 → Parte pública de visualización de Arbol de Categorias (Clasificaciones)
 Pack 4
 -----------------
 F4 → Mantenimiento de Ingredientes, Mantenimiento de Ingredientes en Recetas.
+T7 -> Parte pública de visualización de Ingredientes.
 F5 → Mantenimiento de Menús, Platos en el menú, y Planificaciones de Menús.
-T5 → Parte pública de visualización de Planificaciones de Menús, Menús y Platos.
+T6 → Parte pública de visualización de Anuncios de Ofertas, Acceso y/o Registro de Usuarios.
 -----------------
 
 ----------------------------------------------------------------------------------------

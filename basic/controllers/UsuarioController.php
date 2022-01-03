@@ -69,12 +69,34 @@ class UsuarioController extends Controller
         $model = new Usuario();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+/*             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
+            } */
+            if ($model->load($this->request->post())) {
+                if ($model->validate()) {
+                    // form inputs are valid, do something here
+        
+                    
+                    $model->email= $_POST['Usuario']['email'];
+                    $model->password= hash("sha1", $_POST['Usuario']['password']);
+                    $model->nombre= $_POST['Usuario']['nombre'];
+                    $model->rol= $_POST['Usuario']['rol'];;
+                    $model->aceptado= $_POST['Usuario']['aceptado'];;
+                    $model->creado= date("Y-m-d H:i:s");
+                    
+                    if($model->save()){
+                        return $this->redirect(['view', 'id' => $model->id]);
+                    }
+        
+        
+                    return;
+                }
             }
+            
         } else {
             $model->loadDefaultValues();
         }
+
 
         return $this->render('create', [
             'model' => $model,
@@ -91,10 +113,26 @@ class UsuarioController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        $pass = $model->password;
+/*         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        }
+        } */
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            if ($model->validate()) {
+                // si cambia la contraseña le pasamos el hash
+                if (strcmp($pass, $_POST['Usuario']['password']) !== 0) {
+                    
+                    $model->password= hash("sha1", $_POST['Usuario']['password']);
+                }
+
+                if($model->save()){
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+    
+    
+                return;
+            }
+        }        
 
         return $this->render('update', [
             'model' => $model,
