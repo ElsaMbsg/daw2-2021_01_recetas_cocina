@@ -13,6 +13,9 @@ use yii\widgets\LinkPager;
 class RecetaSearch extends Receta
 {
     public $q;
+
+
+
     /**
      * {@inheritdoc}
      */
@@ -64,12 +67,6 @@ class RecetaSearch extends Receta
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'dificultad' => $this->dificultad,
-            'comensales' => $this->comensales,
-            'tiempo_elaboracion' => $this->tiempo_elaboracion,
-            'valoracion' => $this->valoracion,
-            'usuario_id' => $this->usuario_id,
-            'aceptada' => $this->aceptada,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
@@ -101,7 +98,15 @@ class RecetaSearch extends Receta
             return $dataProvider;
         }
 
-        $query->orFilterWhere(['like', 'id', $this->q]);
+        $query->orFilterWhere(['like', 'nombre', $this->q])
+        ->orFilterWhere(['like', 'descripcion', $this->q])
+        ->orFilterWhere(['like', 'id', $this->q])
+        ->orFilterWhere(['like', 'tipo_plato', $this->q])
+        ->orFilterWhere(['like', 'dificultad', $this->q])
+        ->orFilterWhere(['like', 'comensales', $this->q])
+        ->orFilterWhere(['like', 'tiempo_elaboracion', $this->q])
+        ->orFilterWhere(['like', 'valoracion', $this->q])
+        ->orFilterWhere(['like', 'usuario_id', $this->q]);
 
         return $dataProvider;
     }
