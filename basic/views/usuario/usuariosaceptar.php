@@ -37,7 +37,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'aceptado',
             'creado',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+            'header' => 'Aceptar',
+            'template' => '{update}',
+
+            'urlCreator' => function ($action, $model, $key, $index)
+            {
+                if ($action === 'update')
+                {
+                    $url ='index.php?r=usuario%2Faceptar&id='.$model->id;
+                    return $url;
+                }
+            },
+            ],
+            
         ],
         'layout' => "\n{items}\n",
     ]); ?>
