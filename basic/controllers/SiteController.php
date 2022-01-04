@@ -73,7 +73,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $searchModel = new RecetaSearch();
+
+        $dataProvider = $searchModel->searchNmejores($this->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,]);
     }
 
     /**

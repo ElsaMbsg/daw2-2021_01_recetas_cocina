@@ -81,6 +81,53 @@ class RecetaSearch extends Receta
         return $dataProvider;
     }
 
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function searchNmejores($params)
+    {
+        $query = Receta::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort'=> ['defaultOrder' => ['valoracion' => SORT_DESC]],
+            'pagination'=> [
+                'pageSize'=>3,
+            ]
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+        ]);
+
+        $query->andFilterWhere(['like', 'nombre', $this->nombre])
+            ->andFilterWhere(['like', 'descripcion', $this->descripcion])
+            ->andFilterWhere(['like', 'tipo_plato', $this->tipo_plato])
+            ->andFilterWhere(['like', 'dificultad', $this->dificultad])
+            ->andFilterWhere(['like', 'comensales', $this->comensales])
+            ->andFilterWhere(['like', 'tiempo_elaboracion', $this->tiempo_elaboracion])
+            ->orFilterWhere(['like', 'valoracion', 5])
+            ->orFilterWhere(['like', 'valoracion', 4])
+            ->andFilterWhere(['like', 'usuario_id', $this->usuario_id]);
+
+        return $dataProvider;
+    }
+
 
     public function searchQ($params)
     {
