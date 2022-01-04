@@ -75,7 +75,7 @@ $rutaimg="/daw2-2021_01_recetas_cocina/basic/web/images/";
 
                                     </ul>
                                     <div class="card-body text-center">
-                                        <a href="#" class="btn btn-primary">Información</a>
+                                        <a href="?r=site/verreceta&id=<?= $card->id ?>" class="btn btn-primary">Información</a>
                                         <a href="#" class="btn btn-primary">Pasos de la receta</a>
                                     </div>
 

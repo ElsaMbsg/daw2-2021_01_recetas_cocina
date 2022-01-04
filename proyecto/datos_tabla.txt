@@ -109,3 +109,76 @@ INSERT INTO `receta_pasos` (`id`, `receta_id`, `orden`, `descripcion`) VALUES
 (68, 10, 8, 'Añadimos el pollo. Volvemos a mezclar todos los ingredientes y servimos inmediatamente ¡Esta comida no espera!'),
 (69, 9, 1, 'Comenzamos por los frijoles refritos. Revisamos las alubias negras y retiramos los restos de suciedad y las piedrecillas que puedan contener: Las lavamos a conciencia bajo el grifo de agua. Las colocamos en una olla a presión, junto con una hoja de laurel, y las cubrimos con abuntante agua. Cocemos en la posición 2 durante 30 minutos. Dejamos que el vapor salga por sí solo antes de abrir la olla.\r\n\r\nLas alubias se pueden poner en remojo la noche anterior, lo que aceleraría el tiempo de cocción. Si optáis por ello, aseguráos de ajustar el tiempo de hervor reduciéndolo levemente. No indico tiempos pues cada olla es un mundo, así como cada tipo de alubia. No obstante, el punto de la alubia que perseguimos es aquel en el que, al presionarla entre dos dedos, cede sin resistencia.\r\n\r\nEscurrimos las alubias y reservamos el líquido sobrante de la cocción. Este lo necesitaremos más adelante, de modo que ojo con tirarlo. Calentamos el aceite de girasol en una cacerola, le agregamos la mitad del chile molido y, acto seguido, incorporamos las alubias y sazonamos. Removemos al tiempo que aplastamos con un machacador o con un tenedor. Incorporamos parte del líquido reservado hasta obtener un puré suave pero compacto.'),
 (70, 9, 2, 'Para el relleno de verduras, pelamos la cebolla y la cortamos en juliana gruesa. Lavamos los pimientos, retiramos el pedúnculo y las semillas, cortamos por la mitad y retiramos los filamentos blancos del interior. Cortamos en juliana gruesa, de igual tamaño que la cebolla. En una sartén, calentamos tres cucharadas de aceite de oliva suave y salteamos las verduras a fuego medio-alto. Condimentamos, removemos y retiramos del fuego.\r\n\r\nLimpiamos la sartén con papel absorbente y la volvemos a colocar al fuego para calentar ligeramente las tortillas de trigo. No queremos dorarlas, sólo templarlas para que se vuelvan más maleables, por lo que con 30 segundos tendremos suficiente.\r\n\r\nExtendemos una capa de frijoles refritos en cada tortilla y, sobre estos, las verduras salteadas. Cerramos las tortillas, doblando dos extremos opuestos y a continuación, doblando los otros dos lados sobre estos, a modo de sobre. Tostamos ligeramente por ambos lados, en la sartén y los servimos inmediatamente.');
+
+/*Ingredientes*/
+
+Huevo
+Yogur de limón
+Aceite de oliva
+Azúcar
+Harina
+Levadura
+Limón
+Azúcar glas
+Mantequilla
+Lentejas
+Zanahorias
+Ajo
+Cebolla
+Laurel
+Pimentón dulce
+Sal
+Pimienta negra
+Pimiento verde
+Tomate
+Hueso de caña
+Chorizo
+Morcilla
+Hueso de jamón
+Agua
+Arroz bomba
+Plátano
+Tomate pera
+Pimiento verde
+Alubias negras
+Chile molido
+Aceite de girasol
+Pimiento rojo
+Tortillas de trigo
+Patatas
+Calabacín
+Berenjena
+Champiñones
+Jamón
+Chorizo gallego ahumado
+Fideos de arroz
+Tofu firme
+Jengibre fresco
+Salsa soja
+Curry molido
+Ajo granulado
+Cúrcuma molida
+Lima
+Perejil fresco
+Cilantro
+Pechuga de pollo
+Vino blanco
+Maicena
+Kétchup
+Vinagre de arroz
+Azúcar moreno
+Solomillo
+Lomo
+Shiratak
+Shungiku
+Brotes de bambú
+Café
+Caldo Japonés dashi
+Miel de arroz
+Arroz blanco
+Caballa
+Mugi miso
+Miso de cebada
+Shiro miso
+Miso blanco
+
