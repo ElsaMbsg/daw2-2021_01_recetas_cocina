@@ -16,6 +16,8 @@ use app\models\Ingrediente;
 use app\models\IngredienteSearch;
 use app\helpers\Html;
 use app\models\Usuario;
+use app\models\Menu;
+use app\models\MenuSearch;
 
 
 
@@ -115,6 +117,56 @@ class SiteController extends Controller
         {
             $dataProvider = $searchModel->search($this->request->queryParams);
             return $this->render('fichadetalleingrediente', [
+                'titulo' => $titulo,
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+        }
+
+
+    }
+
+    /**
+     * Muestra las fichas de los menús de forma paginada
+     *
+     * @return string
+     */
+    public function actionVermenus()
+    {
+            $searchModel = new MenuSearch();
+            if (isset($_GET["MenuSearch"]["q"])) {
+                $dataProvider = $searchModel->searchQ($this->request->queryParams);
+            }
+            else {
+                $dataProvider = $searchModel->search($this->request->queryParams);
+            }
+
+            return $this->render('menus', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+    }
+
+    /**
+     * Muestra la ficha detallada de un menú
+     *
+     * @return string
+     */
+    public function actionVermenu()
+    {
+        $titulo="Ficha detalle de Menú";
+        $searchModel = new MenuSearch();
+
+        if (isset($_GET["id"]))
+        {
+            $dataProvider = $searchModel->searchID($this->request->queryParams);
+            return $this->render('fichadetallemenu', [
+                'titulo' => $titulo,
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+        }
+        else
+        {
+            $dataProvider = $searchModel->search($this->request->queryParams);
+            return $this->render('fichadetallemenu', [
                 'titulo' => $titulo,
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,]);

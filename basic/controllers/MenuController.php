@@ -38,7 +38,12 @@ class MenuController extends Controller
     public function actionIndex()
     {
         $searchModel = new MenuSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        if (isset($_GET["MenuSearch"]["q"])) {
+            $dataProvider = $searchModel->searchQ($this->request->queryParams);
+        }
+        else {
+            $dataProvider = $searchModel->search($this->request->queryParams);
+        }
 
         return $this->render('index', [
             'searchModel' => $searchModel,
