@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a(Yii::t('app', 'Create Usuario'), ['create'], ['class' => 'btn btn-verde mt-3']) ?>
-        <?= Html::a(Yii::t('app', 'Aceptar Usuarios'), ['usuariosaceptar'], ['class' => 'btn btn-verde mt-3']) ?>
+        <?= Html::a(Yii::t('app', 'Aceptar Usuarios'), ['usuariosaceptar'], ['class' => 'btn btn-danger mt-3']) ?>
     </p>
 
     <?php echo $this->render('_searchGlob', ['model' => $searchModel]); ?>
@@ -48,4 +48,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'layout' => "\n{items}\n",
     ]); ?>
 
+    <div class="text-center w-100">
+        <?= LinkPager::widget([
+            'pagination' => $dataProvider->pagination,
+        ])?>
+
+    </div>
 </div>

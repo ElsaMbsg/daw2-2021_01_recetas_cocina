@@ -48,6 +48,9 @@ class UsuarioSearch extends Usuario
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination'=> [
+                'pageSize'=>6
+            ]
 
         ]);
 
