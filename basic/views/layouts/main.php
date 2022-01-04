@@ -32,17 +32,28 @@ AppAsset::register($this);
         //'brandLabel' => 'Aplicación de Recetas',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
+            'class' => 'btn-toolbar navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
-    $navItem=[
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-        
-        
-        Yii::$app->user->isGuest ? 
-        (
+
+    $navItem=[];
+
+    if (Yii::$app->user->isGuest)
+    {
+        $navItem=[
+            ['label' => 'Inicio', 'url' => ['/site/index']],
+            ['label' => 'Ingredientes', 'url' => ['/site/veringredientes']],
+            ['label' => 'Recetas', 'url' => ['/site/verrecetas']],
+            ['label' => 'Menus', 'url' => ['/site/vermenus']],
+            ['label' => 'Tiendas', 'url' => ['/site/vertiendas']],
+            ['label' => 'Acerca de', 'url' => ['/site/about']],
+
+        ];
+    }
+    else
+    {
+        $navItem=[
+            ['label' => 'Inicio', 'url' => ['/site/index']],
             [
                 'label' => 'Catalogo',
                 'items' => [
@@ -50,45 +61,40 @@ AppAsset::register($this);
                     ['label' => 'Recetas', 'url' => ['/site/verrecetas']],
                     ['label' => 'Menus', 'url' => ['/site/vermenus']],
                     ['label' => 'Tiendas', 'url' => ['/site/vertiendas']],
-                    ['label' => '...', 'url' => '#'],
-                ],
-            ]
-            
-        ) 
-        : 
-        (
-            
+                ],],
             [
                 'label' => 'Mantenimiento',
                 'items' => [
-                     ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
-                     ['label' => 'Recetas-Ingredientes', 'url' => ['/recetaingrediente/index']],
-                     ['label' => 'Recetas', 'url' => ['/receta/index']],
-                     ['label' => 'Recetas - Pasos', 'url' => ['/receta-paso/index']],
-                     ['label' => 'Recetas - Fotos', 'url' => ['/receta-paso-imagen/index']],
-                     ['label' => 'Menus-Recetas', 'url' => ['/menureceta/index']],
-                     ['label' => 'Planificaciones Menus', 'url' => ['/planificacionmenu/index']],
-                     ['label' => 'Planificaciones', 'url' => ['/planificacion/index']],
-                     ['label' => 'Menus', 'url' => ['/menu/index']],
-                     ['label' => 'Tiendas', 'url' => ['/tienda/index']],
-                     ['label' => 'Tiendas-Ofertas', 'url' => ['/tiendaoferta/index']],
-                     ['label' => 'Usuarios', 'url' => ['/usuario/index']],
-                ],
-            ]
-       
+                    ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
+                    ['label' => 'Recetas-Ingredientes', 'url' => ['/recetaingrediente/index']],
+                    ['label' => 'Recetas', 'url' => ['/receta/index']],
+                    ['label' => 'Recetas - Pasos', 'url' => ['/receta-paso/index']],
+                    ['label' => 'Recetas - Fotos', 'url' => ['/receta-paso-imagen/index']],
+                    ['label' => 'Menus-Recetas', 'url' => ['/menureceta/index']],
+                    ['label' => 'Planificaciones Menus', 'url' => ['/planificacionmenu/index']],
+                    ['label' => 'Planificaciones', 'url' => ['/planificacion/index']],
+                    ['label' => 'Menus', 'url' => ['/menu/index']],
+                    ['label' => 'Tiendas', 'url' => ['/tienda/index']],
+                    ['label' => 'Tiendas-Ofertas', 'url' => ['/tiendaoferta/index']],
+                    ['label' => 'Usuarios', 'url' => ['/usuario/index']],
+                ],]
 
-        )
-        ,
-    ];
-       if(Yii::$app->user->isGuest){
-        
-            array_push($navItem, ['label' => 'Login', 'url' => ['/site/login']], ['label' => 'Registro', 'url' => ['/site/register']]);
-        }
-        else{
-            array_push($navItem,'<li>'. Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline']). Html::submitButton('Logout (' . Yii::$app->user->identity->nombre . ')',['class' => 'btn btn-link logout']). Html::endForm(). '</li>');
-            }
+            ];
 
-            
+    }
+
+   if(Yii::$app->user->isGuest)
+   {
+        //array_push($navItem, ['label' => 'Iniciar Sesión', 'url' => ['/site/login']], ['label' => 'Registro', 'url' => ['/site/register']]);
+       array_push($navItem,'<li class="text-center " style="margin-left: 10px; margin-right: 10px;" >'. Html::beginForm(['/site/login'], 'post', ['class' => 'form-inline ']). Html::submitButton('Iniciar Sesión',['class' => 'ml-5 text-center p-1 mt-1 btn btn-verde text-black logout']). Html::endForm(). '</li>');
+       array_push($navItem,'<li class="text-center" style="margin-left: 10px; margin-right: 10px;">'. Html::beginForm(['/site/register'], 'post', ['class' => 'form-inline ']). Html::submitButton('Registrarse',['class' => 'ml-5 text-center p-1 mt-1 btn btn-verde text-black logout']). Html::endForm(). '</li>');
+
+   }
+   else
+   {
+        array_push($navItem,'<li class="text-center">'. Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline ']). Html::submitButton('Cerrar Sesión (' . Yii::$app->user->identity->nombre . ')',['class' => ' text-center p-1 mt-1 btn btn-verde text-black logout']). Html::endForm(). '</li>');
+   }
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav ms-auto'],
         'items' => $navItem
@@ -98,7 +104,13 @@ AppAsset::register($this);
 </header>
 
 <main role="main" class="flex-shrink-0">
-    <div class="container">
+
+
+
+    <div class="container-fluid mt-5 pt-3 ">
+    <?php //<div class="container mt-5 pt-3 "> desactivar para todo menos el index ?>
+
+
         <?= Breadcrumbs::widget([
             'homeLink' => [
                 'label' => 'Inicio',
@@ -107,8 +119,10 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
+
         <?= $content ?>
     </div>
+
 </main>
 
 <footer class="footer mt-auto py-3 " style="background-color: #c9e0c1; border-radius:25px" >

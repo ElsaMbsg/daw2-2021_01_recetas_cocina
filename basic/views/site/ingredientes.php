@@ -86,7 +86,7 @@ $this->title = 'Aplicación Web de recetas';
             <?php foreach ($dataProvider->getModels() as $card){ ?>
 
             <div class="card col-lg-4 my-3 text-center">
-                <h2 class="text-center"><? echo $card->nombre ?></h2>
+                <h2 class="text-center"><?= $card->nombre ?></h2>
 
                 <p><?php echo $card->descripcion;?></p>
 
