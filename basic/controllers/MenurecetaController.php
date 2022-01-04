@@ -38,7 +38,12 @@ class MenurecetaController extends Controller
     public function actionIndex()
     {
         $searchModel = new MenurecetaSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        if (isset($_GET["MenurecetaSearch"]["q"])) {
+            $dataProvider = $searchModel->searchQ($this->request->queryParams);
+        }
+        else {
+            $dataProvider = $searchModel->search($this->request->queryParams);
+        }
 
         return $this->render('index', [
             'searchModel' => $searchModel,

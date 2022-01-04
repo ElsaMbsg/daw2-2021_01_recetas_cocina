@@ -15,15 +15,10 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'q')->label('')->textInput(['placeholder' => "Busqueda de menus"]) ?>
 
-    <?= $form->field($model, 'titulo') ?>
 
-    <?= $form->field($model, 'descripcion') ?>
-
-    <?= $form->field($model, 'usuario_id') ?>
-
-    <div class="form-group">
+    <div class="form-group text-center my-2">
         <?= Html::submitButton(Yii::t('app', 'Buscar'), ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton(Yii::t('app', 'Resetear'), ['class' => 'btn btn-outline-secondary']) ?>
     </div>

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Menureceta */
 
-$this->title = Yii::t('app', 'Create Menureceta');
+$this->title = Yii::t('app', 'Añadir receta a menú');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Menurecetas'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
