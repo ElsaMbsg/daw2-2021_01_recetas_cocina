@@ -44,7 +44,22 @@ $this->params['breadcrumbs'][] = $this->title;
             //'usuario_id',
             'aceptada',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+                'header' => 'Acciones'],
+
+            ['class' => 'yii\grid\ActionColumn',
+                'header' => 'Pasos',
+                'template' => '{view}',
+
+                'urlCreator' => function ($action, $model, $key, $index)
+                {
+                    if ($action === 'view')
+                    {
+                        $url ='index.php?r=receta-paso%2Findex&RecetaPasoSearch%5Breceta_id%5D='.$model->id;
+                        return $url;
+                    }
+                },
+                ],
         ],
             'layout' => "\n{items}\n",
     ]); ?>

@@ -32,6 +32,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'descripcion:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],
+            
+            ['class' => 'yii\grid\ActionColumn',
+                'header' => 'Imágenes',
+                'template' => '{view}',
+
+                'urlCreator' => function ($action, $model, $key, $index)
+                {
+                    if ($action === 'view')
+                    {
+                        $url ='index.php?r=receta-paso-imagen%2Findex&RecetaPasoImagenSearch%5Breceta_paso_id%5D='.$model->id;
+                        return $url;
+                    }
+                },
+                ],
         ],
     ]); ?>
 
