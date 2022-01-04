@@ -6,12 +6,11 @@ $this->title = 'Aplicación Web de recetas';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">Congratulations!</h1>
+    <div class="w-100 text-center border-1  " style="background-color: #c9e0c1; border-radius:25px ">
+        <img class="" style="width: 15%; " src="/daw2-2021_01_recetas_cocina/basic/web/images/libro-de-recetas.png">
+        <img class="" style="width: 60%; " src="/daw2-2021_01_recetas_cocina/basic/web/images/recetas.png">
+        <img class="" style="width: 15%; " src="/daw2-2021_01_recetas_cocina/basic/web/images/libro-de-recetas2.png">
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
     </div>
 
     <div class="body-content">

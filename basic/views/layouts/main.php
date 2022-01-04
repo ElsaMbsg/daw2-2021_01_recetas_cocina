@@ -28,7 +28,7 @@ AppAsset::register($this);
 <header>
     <?php
     NavBar::begin([
-        'brandLabel' => Html::img('@web/images/logo.png', ['alt' => Yii::$app->name="Aplicación de recetas", 'style' => 'height: 2rem; width: auto; top: 15px; left: 50px; position: absolute;']),
+        'brandLabel' => Html::img('@web/images/logo.png', ['alt' => Yii::$app->name="Aplicación de recetas", 'style' => 'height: 2rem; width: auto; top: 12px; left: 20px; position: absolute; border-radius:25px;']),
         //'brandLabel' => 'Aplicación de Recetas',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
@@ -111,7 +111,7 @@ AppAsset::register($this);
     </div>
 </main>
 
-<footer class="footer mt-auto py-3 btn-verde" >
+<footer class="footer mt-auto py-3 " style="background-color: #c9e0c1; border-radius:25px" >
     <div class="container">
         <p class="text-center">&copy; Daw2 -- 4ºGIISI -- USAL  <?= date('Y') ?></p>
     </div>
