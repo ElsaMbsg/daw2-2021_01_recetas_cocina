@@ -35,6 +35,8 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'aceptada') ?>
 
+    <?php // echo $form->field($model, 'imagen') ?>
+
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Buscar'), ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton(Yii::t('app', 'Resetear'), ['class' => 'btn btn-outline-secondary']) ?>

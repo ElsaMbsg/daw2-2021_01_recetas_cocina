@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'valoracion',
             'usuario_id',
             'aceptada',
+            'imagen',
         ],
     ]) ?>
 

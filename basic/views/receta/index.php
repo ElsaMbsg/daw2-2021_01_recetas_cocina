@@ -43,6 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'valoracion',
             //'usuario_id',
             'aceptada',
+            'imagen',
 
             ['class' => 'yii\grid\ActionColumn',
                 'header' => 'Acciones'],

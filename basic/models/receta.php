@@ -35,7 +35,7 @@ class Receta extends \yii\db\ActiveRecord
     {
         return [
             [['nombre', 'tipo_plato'], 'required'],
-            [['nombre', 'descripcion'], 'string'],
+            [['nombre', 'descripcion','imagen'], 'string'],
             [['dificultad', 'comensales', 'tiempo_elaboracion', 'valoracion', 'usuario_id', 'aceptada'], 'integer'],
             [['tipo_plato'], 'string', 'max' => 1],
         ];
@@ -57,6 +57,7 @@ class Receta extends \yii\db\ActiveRecord
             'valoracion' => Yii::t('app', 'Valoracion'),
             'usuario_id' => Yii::t('app', 'Usuario ID'),
             'aceptada' => Yii::t('app', 'Aceptada'),
+            'imagen' => Yii::t('app', 'Imagen'),
         ];
     }
 

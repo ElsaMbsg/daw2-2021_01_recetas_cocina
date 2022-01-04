@@ -5,6 +5,8 @@
 use yii\bootstrap5\LinkPager;
 
 $this->title = 'Aplicación Web de recetas';
+$rutaimg="/daw2-2021_01_recetas_cocina/basic/web/images/";
+
 ?>
 
 <div class="site-index ">
@@ -50,10 +52,12 @@ $this->title = 'Aplicación Web de recetas';
                 <div class="body-content text-dark">
 
                     <div class="row">
-                        <?php foreach ($dataProvider->getModels() as $card){ ?>
+                        <?php
+
+                        foreach ($dataProvider->getModels() as $card){ ?>
                         <div class="col-lg-4">
-                            <div class="card" style="width: auto; height: 600px">
-                                <img src='/daw2-2021_01_recetas_cocina/basic/web/images/recetapollo.jpg' class="card-img-top" alt="...">
+                            <div class="card" style="width: auto; min-height: 650px">
+                                <img src='<?php echo $rutaimg;echo $card->imagen;?>' class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $card->nombre ?></h5>
                                     <p class="card-text"><?= mb_strimwidth($card->descripcion , 0, 100, "...");  ?></p>
