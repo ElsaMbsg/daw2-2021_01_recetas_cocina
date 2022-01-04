@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use yii\data\ActiveDataProvider;
 use app\models\Usuario;
 use app\models\UsuarioSearch;
 use yii\web\Controller;
@@ -46,6 +47,26 @@ class UsuarioController extends Controller
         }
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionUsuariosaceptar()
+    {
+        $searchModel = new UsuarioSearch(['aceptado'=>0]);
+        //$dataProvider = Usuario::find();
+            $dataProvider = $searchModel->search($this->request->queryParams);
+            //$query = Usuario::find()->where(['id' => 1])->one();
+
+            // add conditions that should always apply here
+    
+/*             $dataProvider = new ActiveDataProvider([
+                'query' => $query,
+    
+            ]); */
+
+        return $this->render('usuariosaceptar', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

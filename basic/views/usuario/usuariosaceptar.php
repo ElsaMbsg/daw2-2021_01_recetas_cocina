@@ -11,7 +11,7 @@ use yii\bootstrap5\LinkPager;
 $this->title = Yii::t('app', 'Usuarios');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="usuario-index">
+<div class="usuario-indexAceptar">
 
 <h1 class="text-center w-100 rounded btn-verde"><?= Html::encode($this->title) ?></h1>
 
@@ -19,11 +19,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Create Usuario'), ['create'], ['class' => 'btn btn-verde mt-3']) ?>
     </p>
 
-    <?php echo $this->render('_searchGlob', ['model' => $searchModel]); ?>
-    <?php echo "<details class='my-3'><summary>Búsqueda Avanzada</summary>";
-        echo $this->render('_search', ['model' => $searchModel]);
-        echo "</details>";
-        ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
