@@ -68,9 +68,9 @@ FTI1 - Portada --
 ----------------------------------------------------------------
 
 FTI1 - Portada:
-    -Logotipo, menu clasificacion recetas.
-    -Fichas resumen de N recetas recomendadas centro y paginadas.
-    -Anuncios ofertas tiendas en la derecha.
+    -Logotipo, menu clasificacion recetas izquierda. -- hecho estatico
+    -Fichas resumen de N recetas recomendadas centro y paginadas. -- hecho estatico
+    -Anuncios ofertas tiendas en la derecha. -- hecho estatico
 
 FTI2 - Filtros clasificacion recetas recomendadas (del mes, de la semana...):
     -Boton filtrar en los filtros de busqueda.
@@ -88,7 +88,7 @@ FTI5 - Seccion recetas con productos de oferta en tiendas:
     -Mejor que en ficha detallada en el producto aparezca la tienda que mejor
     oferta tenga del ingrediente y su precio
 
-FTI6 - Menu de categorias de productos que permita avanzar por clics:
+FTI6 - Menu de categorias de recetas que permita avanzar por clics:
     - Menu a la izquierda con submenus con un esquema de arbol.
     - Recetas vegetarianas -> postres -> listaria los postres vegetarianos
 
