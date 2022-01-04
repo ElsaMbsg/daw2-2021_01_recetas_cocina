@@ -71,7 +71,12 @@ class RecetaSearch extends Receta
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'descripcion', $this->descripcion])
-            ->andFilterWhere(['like', 'tipo_plato', $this->tipo_plato]);
+            ->andFilterWhere(['like', 'tipo_plato', $this->tipo_plato])
+            ->andFilterWhere(['like', 'dificultad', $this->dificultad])
+            ->andFilterWhere(['like', 'comensales', $this->comensales])
+            ->andFilterWhere(['like', 'tiempo_elaboracion', $this->tiempo_elaboracion])
+            ->andFilterWhere(['like', 'valoracion', $this->valoracion])
+            ->andFilterWhere(['like', 'usuario_id', $this->usuario_id]);
 
         return $dataProvider;
     }
