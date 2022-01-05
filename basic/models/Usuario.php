@@ -140,4 +140,51 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return new UsuarioQuery(get_called_class());
     }
+
+    public $role;
+
+    public static function esUsuarioColaborador($id)
+    {
+       if (Usuario::findOne(['id' => $id, 'aceptado' => '1', 'role' => "C"])){
+       return true;
+       } else {
+
+       return false;
+       }
+    }
+    public static function esUsuarioAdministrador($id)
+    {
+       if (Usuario::findOne(['id' => $id, 'aceptado' => '1', 'role' => "A"])){
+        return true;
+       } else {
+
+        return false;
+       }
+
+    }
+
+    public static function esUsuarioTienda($id)
+    {
+       if (Usuario::findOne(['id' => $id, 'aceptado' => '1', 'role' => "T"])){
+        return true;
+       } else {
+
+        return false;
+       }
+
+    }
+
+    public static function esUsuarioSistema($id)
+    {
+       if (Usuario::findOne(['id' => $id, 'aceptado' => '1', 'role' => "S"])){
+        return true;
+       } else {
+
+        return false;
+       }
+
+    }
+
+
+
 }
