@@ -25,16 +25,17 @@ use app\models\TiendaSearch;
                     $model2 = TiendaSearch::find()->select(['nombre', 'domicilio','provincia'])->where(['id' =>  $card->tienda_id])->one();
                 ?>
 
-                <h3 class="text-center"><?php  echo $model->nombre ?></h3>
+                <h1 class="text-center bg-warning"><?php  echo $model->nombre ?></h1>
+                    <h3 class="text-center mt-4 btn-verde">Supermercado: </h3>
                     <p><?php echo "Oferta del "; echo $model2->nombre;echo " (";echo $model2->domicilio;echo ", ";echo $model2->provincia;echo ") ";?></p>
 
-                    <h3 class="text-center">Descripcion: </h3>
+                    <h3 class="text-center btn-verde">Descripcion: </h3>
                 <p><?php echo $card->descripcion;?></p>
-                    <h3 class="text-center">Envase: </h3>
+                    <h3 class="text-center btn-verde">Envase: </h3>
                 <p><?php echo $card->envase;?></p>
-                <h3 class="text-center">Cantidad: </h3>
+                <h3 class="text-center btn-verde">Cantidad: </h3>
                 <p><?php echo $card->cantidad;echo " "; echo $card->medida ?></p>
-                <h3 class="text-center">Precio: </h3>
+                <h3 class="text-center btn-verde">Precio: </h3>
                 <p><?php echo $card->notas;?></p>
 
 

@@ -47,7 +47,7 @@
                     ?>
                         <div class="card col-lg-4 my-3 text-center">
 
-                            <h4 class="text-center">DÍA <?php echo strtoupper($pm->numero_dia) ?></h4s>
+                            <h4 class="text-center">DÍA <?php echo strtoupper($pm->numero_dia) ?></h4>
 
                             <h2 class="text-center"><b><?php echo strtoupper($card->titulo) ?></b></h2>
 

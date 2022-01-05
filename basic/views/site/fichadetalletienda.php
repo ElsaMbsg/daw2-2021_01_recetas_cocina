@@ -17,13 +17,13 @@
                     $existe=1;
                     if ($card->visible==1 && $card->activa==1){?>
 
-                <h3 class="text-center"><?php echo $card->id; echo ". "; echo $card->nombre ?></h3>
+                <h1 class="text-center mb-4 bg-warning"><?php  echo $card->nombre ?></h1>
 
-                    <h3 class="text-center">Domicilio: </h3>
+                    <h3 class="text-center btn-verde">Domicilio: </h3>
                     <p><?php echo $card->domicilio;?></p>
-                    <h3 class="text-center">Población: </h3>
+                    <h3 class="text-center btn-verde">Población: </h3>
                     <p><?php echo $card->poblacion;?></p>
-                    <h3 class="text-center">Provincia: </h3>
+                    <h3 class="text-center btn-verde">Provincia: </h3>
                     <p><?php echo $card->provincia;?></p>
 
                     <?php $direccionCompleta=$card->nombre.", ".$card->domicilio.", ".$card->poblacion.", ".$card->provincia; ?>

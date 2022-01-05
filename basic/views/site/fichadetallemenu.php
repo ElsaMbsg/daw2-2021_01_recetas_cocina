@@ -17,17 +17,15 @@
             {
                 if ($_GET["id"]==$card->id)
                 { ?>
-                <h1 class="text-center"><b><?php echo strtoupper($card->titulo) ?></b></h1>
-                    <h3 class="text-center">Descripción menú: </h3>
+                <h1 class="text-center mb-4 bg-warning"><b><?php echo strtoupper($card->titulo) ?></b></h1>
+                    <h3 class="text-center btn-verde">Descripción menú: </h3>
                     <p><?php echo $card->descripcion;?></p>
-                    <h3 class="text-center">ID Usuario: </h3>
+                    <h3 class="text-center btn-verde">ID Usuario: </h3>
                     <p><?php echo $card->usuario_id;?></p>
-                    <h3 class="text-center"> RECETAS DEL MENÚ: </h3>
+                    <h3 class="text-center btn-verde"> RECETAS DEL MENÚ: </h3>
                 <?php }
             }
-
             //hacer consulta para coger todos las recetas de ese menú.
-
         }
         else {?>
             <button class="btn bg-danger w-100">El menú no existe.</button>

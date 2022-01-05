@@ -1,19 +1,17 @@
 --------------------------------------------------
       Parejas de trabajo dentro del grupo
 --------------------------------------------------
-
 Nerea y Marcos  -> 4
 Victor y Fer    -> 1
 Sara y Elsa     -> 3
 Manu y Pablo    -> 2
+--------------------------------------------------
 
-                            --------------------------------------------------
-                                  ASIGNACION DE TAREAS POR PRIORIDAD
-                            --------------------------------------------------
 
-                            --------------------------------------------------
-                                Funcionalidades y tareas explicitas
-                            --------------------------------------------------
+                                    --------------------------------------------------
+                                                  ASIGNACIÓN DE TAREAS
+                                    --------------------------------------------------
+
 
 ----------------------------------------------------------------------------------------------------------------------------
 Pack 1
@@ -33,6 +31,12 @@ FTI10 - Registro y acceso de usuarios:
     -En el registro, el administrador debe confirmar el registro de usuario:
         -El campo aceptado tendra: 0 (pendiente de aceptar), 1 (aceptado), 2 (No aceptado).
         -El campo creado tendra: la fecha de creacion del usuario
+
+ ----- mirar -----
+
+        -Administrador del Sistema (sysadmin): Pensado para los programadores de la aplicación y/o administradores
+        generales del sistema donde se instale, tendrá acceso a todas las funciones de la aplicación sin restricciones,
+        y opcionalmente deberá poder activar el rol que desee para trabajar como un usuario de ese tipo.
 ----------------------------------------------------------------------------------------------------------------------------
 
 
@@ -68,33 +72,37 @@ FTI6 - Menu de categorias de recetas que permita avanzar por clics:
 ----------------------------------------------------------------------------------------------------------------------------
 Pack 4
 ----------------------------------------------------------------------------------------------------------------------------
-F4 → Mantenimiento de Ingredientes, Mantenimiento de Ingredientes en Recetas. -- falta recetas de pablo
+F4 → Mantenimiento de Ingredientes, Mantenimiento de Ingredientes en Recetas. -- hecho
 T7 -> Parte pública de visualización de Ingredientes. -- hecho
 F5 → Mantenimiento de Menús, Platos en el menú, y Planificaciones de Menús. -- hecho
-T6 → Parte pública de visualización de Anuncios de Ofertas.  -- parte portada hay anuncios -- falta
+T6 → Parte pública de visualización de Anuncios de Ofertas.  -- hecho
 F6 → Mantenimiento de Tiendas y Ofertas de Tiendas. -- hecho
 ---
-FTI5 - Seccion recetas con productos de oferta en tiendas:
-    -En cada ficha de receta, se mostrarán las ofertas relacionadas con sus ingredientes.
-FTI8 - Ofertas de tiendas y vista de tiendas:
+FTI5 - Seccion recetas con productos de oferta en tiendas: -- hecho
+    -En cada ficha de receta, se mostrarán las ofertas relacionadas con sus ingredientes. -- hecho
+
+FTI8 - Ofertas de tiendas y vista de tiendas: -- hecho
     -Filtrado por ciudades o pueblos de tiendas. --hecho
     -Al pulsar tienda, fichas de productos con precio, titulo y descripcion corta. -- hecho
     -Filtro de clasificacion de productos u ofertas. -- hecho
     -Ficha detallada con precio cuando pulsas un producto. -- hecho
-    -Un usuario tienda puede borrar sus productos pero no su tienda. -- parte permisos victor
+
 FTI9 - Ingredientes:
     -Filtrado por tipo de ingrediente, vegetariano, vegano... -- hecho
     -Al pulsar accion verIngrediente, fichas resumidas de ingredientes paginados. -- hecho
     -Ficha detallada cuando pulsas un ingrediente. -- hecho
+
 FTI1 - Portada:
-    -Logotipo, menu clasificacion recetas izquierda. -- hecho estatico
+    -Logotipo, menu clasificacion recetas izquierda. -- -- hecho dinamico
     -Fichas resumen de N recetas recomendadas centro y paginadas. -- hecho dinamico, falta subida fotos.
-    -Anuncios ofertas tiendas en la derecha. -- hecho estatico
+    -Anuncios ofertas tiendas en la derecha. -- hecho dinamico
+
+FXX - Diseño aplicación y estilos parte publica y privada
+    -Diseño de colores.
+    -Diseño página error.
+    -Diseño menus navegación.
 ----------------------------------------------------------------------------------------------------------------------------
 
-----------------------------------------------------------------------------------------------------------------------------
-****************************************************************************************************************************
-----------------------------------------------------------------------------------------------------------------------------
 
 
 
