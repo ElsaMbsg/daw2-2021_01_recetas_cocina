@@ -141,11 +141,11 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return new UsuarioQuery(get_called_class());
     }
 
-    public $role;
+    public $rol;
 
     public static function esUsuarioColaborador($id)
     {
-       if (Usuario::findOne(['id' => $id, 'aceptado' => '1', 'role' => "C"])){
+       if (Usuario::findOne(['id' => $id, 'aceptado' => '1', 'rol' => "C"])){
        return true;
        } else {
 
@@ -154,7 +154,7 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
     public static function esUsuarioAdministrador($id)
     {
-       if (Usuario::findOne(['id' => $id, 'aceptado' => '1', 'role' => "A"])){
+       if (Usuario::findOne(['id' => $id, 'aceptado' => '1', 'rol' => "A"])){
         return true;
        } else {
 
@@ -165,7 +165,7 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     public static function esUsuarioTienda($id)
     {
-       if (Usuario::findOne(['id' => $id, 'aceptado' => '1', 'role' => "T"])){
+       if (Usuario::findOne(['id' => $id, 'aceptado' => '1', 'rol' => "T"])){
         return true;
        } else {
 
@@ -176,7 +176,7 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     public static function esUsuarioSistema($id)
     {
-       if (Usuario::findOne(['id' => $id, 'aceptado' => '1', 'role' => "S"])){
+       if (Usuario::findOne(['id' => $id, 'aceptado' => '1', 'rol' => "S"])){
         return true;
        } else {
 
