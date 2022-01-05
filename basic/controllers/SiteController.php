@@ -21,6 +21,9 @@ use app\helpers\Html;
 use app\models\Usuario;
 use app\models\Menu;
 use app\models\MenuSearch;
+use app\models\Planificacion;
+use app\models\PlanificacionSearch;
+
 
 
 
@@ -182,6 +185,56 @@ class SiteController extends Controller
             $dataProvider = $searchModel->search($this->request->queryParams);
             return $this->render('fichadetallemenu', [
                 'titulo' => $titulo,
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+        }
+
+
+    }
+
+    /**
+     * Muestra las fichas de los menús de forma paginada
+     *
+     * @return string
+     */
+    public function actionVerplanificaciones()
+    {
+            $searchModel = new PlanificacionSearch();
+            if (isset($_GET["PlanificacionSearch"]["q"])) {
+                $dataProvider = $searchModel->searchQ($this->request->queryParams);
+            }
+            else {
+                $dataProvider = $searchModel->search($this->request->queryParams);
+            }
+
+            return $this->render('planificaciones', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+    }
+
+    /**
+     * Muestra la ficha detallada de un menú
+     *
+     * @return string
+     */
+    public function actionVerplanificacion()
+    {
+        $titulo="Ficha detalle de planificación";
+        $searchModel = new PlanificacionSearch();
+
+        if (isset($_GET["id"]))
+        {
+            $dataProvider = $searchModel->searchID($this->request->queryParams);
+            return $this->render('fichadetalleplanificacion', [
+                'nombre' => $titulo,
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,]);
+        }
+        else
+        {
+            $dataProvider = $searchModel->search($this->request->queryParams);
+            return $this->render('fichadetalleplanificacion', [
+                'nombre' => $titulo,
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,]);
         }

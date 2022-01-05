@@ -44,6 +44,7 @@ AppAsset::register($this);
             ['label' => 'Inicio', 'url' => ['/site/index']],
             ['label' => 'Ingredientes', 'url' => ['/site/veringredientes']],
             ['label' => 'Recetas', 'url' => ['/site/verrecetas']],
+            ['label' => 'Planificaciones', 'url' => ['/site/verplanificaciones']],
             ['label' => 'Menus', 'url' => ['/site/vermenus']],
             ['label' => 'Tiendas', 'url' => ['/site/vertiendas']],
             ['label' => 'Acerca de', 'url' => ['/site/about']],
@@ -60,6 +61,7 @@ AppAsset::register($this);
                     ['label' => 'Ingredientes', 'url' => ['/site/veringredientes']],
                     ['label' => 'Recetas', 'url' => ['/site/verrecetas']],
                     ['label' => 'Menus', 'url' => ['/site/vermenus']],
+                    ['label' => 'Planificaciones', 'url' => ['/site/verplanificaciones']],
                     ['label' => 'Tiendas', 'url' => ['/site/vertiendas']],
                 ],],
             [

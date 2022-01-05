@@ -5,12 +5,15 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Planificacion;
+use yii\widgets\LinkPager;
 
 /**
  * PlanificacionSearch represents the model behind the search form of `app\models\Planificacion`.
  */
 class PlanificacionSearch extends Planificacion
 {
+    public $q;
+
     /**
      * {@inheritdoc}
      */
@@ -18,7 +21,7 @@ class PlanificacionSearch extends Planificacion
     {
         return [
             [['id', 'usuario_id'], 'integer'],
-            [['nombre', 'periodo', 'notas'], 'safe'],
+            [['nombre', 'q', 'periodo', 'notas'], 'safe'],
         ];
     }
 
@@ -46,6 +49,9 @@ class PlanificacionSearch extends Planificacion
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination'=> [
+                'pageSize'=>6
+            ]
         ]);
 
         $this->load($params);
@@ -65,6 +71,63 @@ class PlanificacionSearch extends Planificacion
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'periodo', $this->periodo])
             ->andFilterWhere(['like', 'notas', $this->notas]);
+
+        return $dataProvider;
+    }
+
+    public function searchQ($params)
+    {
+        $query = Planificacion::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination'=> [
+                'pageSize'=>6
+            ]
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->orFilterWhere(['like', 'nombre', $this->q])
+            ->orFilterWhere(['like', 'periodo', $this->q])
+            ->orFilterWhere(['like', 'usuario_id', $this->q])
+            ->orFilterWhere(['like', 'id', $this->q])
+            ->orFilterWhere(['like', 'notas', $this->q]);
+
+        return $dataProvider;
+    }
+
+    public function searchID($params)
+    {
+        $query = Planificacion::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+        ]);
 
         return $dataProvider;
     }
