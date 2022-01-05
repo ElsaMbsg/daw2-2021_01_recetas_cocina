@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use app\models\Ingrediente;
+use app\models\TiendaSearch;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -84,11 +86,14 @@ $this->title = 'Aplicación Web de recetas';
             <?php //foreach ($model as $card){ ?>
             <?php foreach ($dataProvider->getModels() as $card)
             {
+                $model = Ingrediente::find()->select('nombre')->where(['id' =>  $card->ingrediente_id])->one();
+                $model2 = TiendaSearch::find()->select(['nombre', 'domicilio','provincia'])->where(['id' =>  $card->tienda_id])->one();
                 //if ($card->tienda_id==$_GET['idtienda']){?>
 
             <div class="card col-lg-4 my-3 text-center">
-                <h2 class="text-center"><?php  echo $card->descripcion ?></h2>
+                <h2 class="text-center"><?php  echo $model->nombre ?></h2>
 
+                <p><?php echo "Oferta del "; echo $model2->nombre;echo " (";echo $model2->domicilio;echo ", ";echo $model2->provincia;echo ") ";?></p>
                 <p><?php echo $card->envase;?></p>
                 <p><?php echo $card->cantidad;echo $card->medida;?></p>
                 <p><?php echo $card->notas;?></p>

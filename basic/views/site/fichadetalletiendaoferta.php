@@ -1,3 +1,9 @@
+<?php
+
+use app\models\Ingrediente;
+use app\models\TiendaSearch;
+
+?>
 
 <body>
 <div class="container">
@@ -15,10 +21,16 @@
                 if ($_GET["id"]==$card->id)
                 {
                     $existe=1;
-
+                    $model = Ingrediente::find()->select('nombre')->where(['id' =>  $card->ingrediente_id])->one();
+                    $model2 = TiendaSearch::find()->select(['nombre', 'domicilio','provincia'])->where(['id' =>  $card->tienda_id])->one();
                 ?>
-                <h3 class="text-center"><?php  echo $card->descripcion ?></h3>
-                <h3 class="text-center">Envase: </h3>
+
+                <h3 class="text-center"><?php  echo $model->nombre ?></h3>
+                    <p><?php echo "Oferta del "; echo $model2->nombre;echo " (";echo $model2->domicilio;echo ", ";echo $model2->provincia;echo ") ";?></p>
+
+                    <h3 class="text-center">Descripcion: </h3>
+                <p><?php echo $card->descripcion;?></p>
+                    <h3 class="text-center">Envase: </h3>
                 <p><?php echo $card->envase;?></p>
                 <h3 class="text-center">Cantidad: </h3>
                 <p><?php echo $card->cantidad;echo " "; echo $card->medida ?></p>
