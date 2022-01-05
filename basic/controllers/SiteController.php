@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Tiendaoferta;
 use app\models\TiendaofertaSearch;
 use app\models\TiendaSearch;
 use Yii;
@@ -188,9 +189,14 @@ CADA ROL *//////////////////////////////////////////////////////////////////////
 
         $dataProvider = $searchModel->searchNmejores($this->request->queryParams);
 
+        $modeloOfertas=Tiendaoferta::find()->orderBy([
+            'id' => SORT_DESC,
+        ])->limit(5)->all();
+
         return $this->render('index', [
             'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,]);
+            'dataProvider' => $dataProvider,
+            'modeloOfertas'=>$modeloOfertas]);
     }
 
     /**
