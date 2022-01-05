@@ -21,7 +21,18 @@ Pack 1
 F1 → Mantenimiento de Usuarios, Perfiles y Relaciones entre ellos, Mantenimiento de la Configuración, y Copias de Seguridad.
 T5 → Parte pública de visualización de Planificaciones de Menús, Menús y Platos.
 ---
-FTI10 - Registro y acceso de usuarios.
+FTI7- Planificacion de menus de recetas
+    -Menus de tipos de menus como: menus navidad, semana santa, dieta semanal,
+    dieta quince dias...
+    -Fichas resumen de menus y paginados.
+    -Fichas detalle de menus.
+
+FTI10 - Registro y acceso de usuarios:
+    -Se debera de realizar un login.
+    -Se debera realizar una página de registro.
+    -En el registro, el administrador debe confirmar el registro de usuario:
+        -El campo aceptado tendra: 0 (pendiente de aceptar), 1 (aceptado), 2 (No aceptado).
+        -El campo creado tendra: la fecha de creacion del usuario
 ----------------------------------------------------------------------------------------------------------------------------
 
 
@@ -32,6 +43,13 @@ F2 → Mantenimiento de Recetas, Pasos, Imágenes en los pasos.
 T1 → Parte pública de visualización de Lista de Recetas con "ficha resumida".
 T2 → Parte pública de visualización de Recetas con "ficha detallada".
 T4 → Parte pública de visualización de Búsqueda detallada de Recetas y Filtrado de Recetas por esos datos.
+-----------
+FTI2 - Filtrado avanzado de recetas y clasificacion recetas recomendadas (del mes, de la semana...):
+    -Boton filtrar en los filtros de busqueda.
+    -Filtros de busqueda
+    -Boton marcha atras con almacenamiento de opciones y filtrado en sesion.
+    -Mas votadas, recomendadas, fav, rapidas, comensales
+    -vegetarianas, veganas, alergenos...precios en rangos
 ----------------------------------------------------------------------------------------------------------------------------
 
 
@@ -40,6 +58,10 @@ Pack 3
 ----------------------------------------------------------------------------------------------------------------------------
 F3 → Mantenimiento de Categorias, Mantenimiento de Categorías en Recetas, Mantenimiento de Comentarios en Recetas.
 T3 → Parte pública de visualización de Arbol de Categorias (Clasificaciones) y Filtrado de Recetas por categorías.
+--------------------- SIN HACER --------------------------------------------------------------------------------------------
+FTI6 - Menu de categorias de recetas que permita avanzar por clics:
+    - Menu a la izquierda con submenus con un esquema de arbol.
+    - Recetas vegetarianas -> postres -> listaria los postres vegetarianos
 ----------------------------------------------------------------------------------------------------------------------------
 
 
@@ -49,73 +71,41 @@ Pack 4
 F4 → Mantenimiento de Ingredientes, Mantenimiento de Ingredientes en Recetas. -- falta recetas de pablo
 T7 -> Parte pública de visualización de Ingredientes. -- hecho
 F5 → Mantenimiento de Menús, Platos en el menú, y Planificaciones de Menús. -- hecho
-T6 → Parte pública de visualización de Anuncios de Ofertas.  --
+T6 → Parte pública de visualización de Anuncios de Ofertas.  -- parte portada hay anuncios -- falta
 F6 → Mantenimiento de Tiendas y Ofertas de Tiendas. -- hecho
 ---
-FTI8 - Ofertas de tiendas y vista de tiendas. -- hecho
-FTI9 - Ingredientes.  -- hecho
-FTI1 - Portada --
-----------------------------------------------------------------------------------------------------------------------------
-
-
-----------------------------------------------------------------------------------------------------------------------------
-****************************************************************************************************************************
-----------------------------------------------------------------------------------------------------------------------------
-
-
-----------------------------------------------------------------
-  Funcionalidades y tareas implicitas  (Puede faltar algo...)
-----------------------------------------------------------------
-
-FTI1 - Portada:
-    -Logotipo, menu clasificacion recetas izquierda. -- hecho estatico
-    -Fichas resumen de N recetas recomendadas centro y paginadas. -- hecho estatico
-    -Anuncios ofertas tiendas en la derecha. -- hecho estatico
-
-FTI2 - Filtros clasificacion recetas recomendadas (del mes, de la semana...):
-    -Boton filtrar en los filtros de busqueda.
-    -Filtros de busqueda
-
-FTI3 - Ficha detalle de Receta:
-    -Boton marcha atras con almacenamiento de opciones y filtrado en sesion
-
-FTI4 - Filtrado avanzado de recetas:
-    -mas votadas, recomendadas, fav, rapidas, comensales
-    -vegetarianas, veganas, alergenos...
-    -precios en rangos
-
 FTI5 - Seccion recetas con productos de oferta en tiendas:
-    -Mejor que en ficha detallada en el producto aparezca la tienda que mejor
-    oferta tenga del ingrediente y su precio
-
-FTI6 - Menu de categorias de recetas que permita avanzar por clics:
-    - Menu a la izquierda con submenus con un esquema de arbol.
-    - Recetas vegetarianas -> postres -> listaria los postres vegetarianos
-
-FTI7- Planificacion de menus de recetas
-    -Menus de tipos de menus como: menus navidad, semana santa, dieta semanal,
-    dieta quince dias...
-    -Fichas resumen de menus y paginados.
-    -Fichas detalle de menus.
-
+    -En cada ficha de receta, se mostrarán las ofertas relacionadas con sus ingredientes.
 FTI8 - Ofertas de tiendas y vista de tiendas:
     -Filtrado por ciudades o pueblos de tiendas. --hecho
     -Al pulsar tienda, fichas de productos con precio, titulo y descripcion corta. -- hecho
     -Filtro de clasificacion de productos u ofertas. -- hecho
     -Ficha detallada con precio cuando pulsas un producto. -- hecho
     -Un usuario tienda puede borrar sus productos pero no su tienda. -- parte permisos victor
-
 FTI9 - Ingredientes:
     -Filtrado por tipo de ingrediente, vegetariano, vegano... -- hecho
     -Al pulsar accion verIngrediente, fichas resumidas de ingredientes paginados. -- hecho
     -Ficha detallada cuando pulsas un ingrediente. -- hecho
+FTI1 - Portada:
+    -Logotipo, menu clasificacion recetas izquierda. -- hecho estatico
+    -Fichas resumen de N recetas recomendadas centro y paginadas. -- hecho dinamico, falta subida fotos.
+    -Anuncios ofertas tiendas en la derecha. -- hecho estatico
+----------------------------------------------------------------------------------------------------------------------------
 
-FTI10 - Registro y acceso de usuarios:
-    -Se debera de realizar un login.
-    -Se debera realizar una página de registro.
-    -En el registro, el administrador debe confirmar el registro de usuario:
-        -El campo aceptado tendra: 0 (pendiente de aceptar), 1 (aceptado), 2 (No aceptado).
-        -El campo creado tendra: la fecha de creacion del usuario
+----------------------------------------------------------------------------------------------------------------------------
+****************************************************************************************************************************
+----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
 
 
 

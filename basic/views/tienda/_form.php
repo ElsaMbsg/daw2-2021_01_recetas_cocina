@@ -1,5 +1,7 @@
 <?php
 
+use app\models\Usuario;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -71,7 +73,19 @@ use yii\widgets\ActiveForm;
         ]) ?>
 
 
-    <?= $form->field($model, 'usuario_id')->textInput() ?>
+    <?php // $form->field($model, 'usuario_id')->textInput() ?>
+
+    <?php
+
+    $usuariosTienda=Usuario::find()->where(['rol'=>'T'])->select(['id','nombre'])->all();
+
+    //use yii\helpers\ArrayHelper;
+    $listUsuariosTienda=ArrayHelper::map($usuariosTienda,'id', 'nombre');
+
+    echo $form->field($model, 'usuario_id')->dropDownList(
+        $listUsuariosTienda,
+        ['prompt'=>'Seleccione un usuario tienda...']
+    )->label("Usuario Tienda ID:") ?>
 
     <?= $form->field($model, 'activa')->dropDownList([
         0 => 'Inactiva',
