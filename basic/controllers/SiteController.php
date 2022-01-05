@@ -191,7 +191,7 @@ CADA ROL *//////////////////////////////////////////////////////////////////////
 
         $modeloOfertas=Tiendaoferta::find()->orderBy([
             'id' => SORT_DESC,
-        ])->limit(5)->all();
+        ])->limit(6)->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -499,11 +499,17 @@ CADA ROL *//////////////////////////////////////////////////////////////////////
             $dataProvider = $searchModel->searchID($this->request->queryParams);
             $dataProvider2 = $searchModel->searchIngrediente($this->request->queryParams);
 
+            //$modeloOfertas=Tiendaoferta::find()->orderBy([
+             //   'id' => SORT_DESC,
+            //])->limit(9)->all();
+
             return $this->render('fichadetallereceta', [
                 'titulo' => $titulo,
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
-                'dataProvider2' => $dataProvider2,]);
+                'dataProvider2' => $dataProvider2,
+                //'modeloOfertas'=>$modeloOfertas
+            ]);
         }
         else
         {
@@ -513,8 +519,6 @@ CADA ROL *//////////////////////////////////////////////////////////////////////
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,]);
         }
-
-
     }
 
 

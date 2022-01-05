@@ -1,6 +1,8 @@
 <?php
 
 use app\models\Ingrediente;
+use app\models\Tienda;
+use app\models\Tiendaoferta;
 
 ?>
 
@@ -17,25 +19,68 @@ use app\models\Ingrediente;
             {
                 if ($_GET["id"]==$card->id)
                 { ?>
-                <h2 class="text-center mb-4"><?php echo $card->nombre ?></h2>
-                    <h3 class="text-center">Descripción receta: </h3>
+                <h2 class="text-center mb-4 bg-warning"><?php echo $card->nombre ?></h2>
+                    <h3 class="text-center btn-verde">Descripción receta: </h3>
                     <p><?php echo $card->descripcion;?></p>
                 <?php }
             }?>
-            <h3 class="text-center mb-5">Ingredientes receta: </h3>
 
+
+            <h3 class="text-center mb-5 btn-verde">Ingredientes receta: </h3>
+            <?php
+            foreach ($dataProvider2->getModels() as $card2)
+            {
+                //echo "$card2->receta_id";
+                if ($_GET["id"]==$card2->receta_id)
+                {
+                    $model = Ingrediente::find()->select('nombre')->where(['id' =>  $card2->ingrediente_id])->one();
+                    ?>
+                    <h5 class="text-center"><?php echo $card2->cantidad;echo " ";echo $card2->medida;echo " de ";echo $model->nombre ?></h5>
+
+                    <?php
+                }
+
+            }
+            ?>
+
+            <h3 class="text-center mb-5 mt-5 btn-verde">OFERTAS RELACIONADAS: </h3>
+            <div class="row">
             <?php
             foreach ($dataProvider2->getModels() as $card2)
             {
                 if ($_GET["id"]==$card2->receta_id)
                 {
-
                     $model = Ingrediente::find()->select('nombre')->where(['id' =>  $card2->ingrediente_id])->one();
+                    $modeloOfertas=Tiendaoferta::find()->orderBy(['id' => SORT_DESC,])->where(['ingrediente_id' =>  $card2->ingrediente_id])->limit(1)->all();
+                    ?>
+
+                    <?php foreach ($modeloOfertas as $card3)
+                    {
+                    $modelTienda=Tienda::find()->where(['id'=>$card3->tienda_id])->one();
+                    $modelProducto=Ingrediente::find()->where(['id'=>$card3->ingrediente_id])->one();
+                    $tienda=$modelTienda->nombre;
+                    $producto=$modelProducto->nombre;
 
                     ?>
-                    <h5 class="text-center"><?php echo $card2->cantidad;echo " ";echo $card2->medida;echo " de ";echo $model->nombre ?></h5>
+
+                    <div class="col-lg-4 my-3 border-2 border-danger">
+                        <a href="?r=site/vertiendaoferta&id=<?php echo $card3->id ?>" class="w-100">
+                            <span class="w-100 btn bg-danger rounded"><?php echo "¡";echo $card3->descripcion;echo "!";?></span>
+                            <span class="w-100 btn bg-warning rounded"><?php  echo $producto;echo " ("; echo $tienda; echo ") ";?></span>
+                            <span class="w-100 btn bg-success rounded"><?php echo $card3->notas;?></span>
+                        </a>
+                    </div>
+
                 <?php }
-            }
+                }
+            } ?>
+            </div>
+
+
+
+
+
+            <?php
         }
         else {?>
             <button class="btn bg-danger w-100">La receta no existe.</button>
