@@ -52,7 +52,7 @@ F5 → Mantenimiento de Menús, Platos en el menú, y Planificaciones de Menús.
 T6 → Parte pública de visualización de Anuncios de Ofertas.  --
 F6 → Mantenimiento de Tiendas y Ofertas de Tiendas. -- hecho
 ---
-FTI8 - Ofertas de tiendas y vista de tiendas.
+FTI8 - Ofertas de tiendas y vista de tiendas. -- hecho
 FTI9 - Ingredientes.  -- hecho
 FTI1 - Portada --
 ----------------------------------------------------------------------------------------------------------------------------

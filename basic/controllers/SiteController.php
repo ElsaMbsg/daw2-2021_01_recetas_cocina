@@ -385,10 +385,13 @@ class SiteController extends Controller
         if (isset($_GET["id"]))
         {
             $dataProvider = $searchModel->searchID($this->request->queryParams);
+            $dataProvider2 = $searchModel->searchIngrediente($this->request->queryParams);
+
             return $this->render('fichadetallereceta', [
                 'titulo' => $titulo,
                 'searchModel' => $searchModel,
-                'dataProvider' => $dataProvider,]);
+                'dataProvider' => $dataProvider,
+                'dataProvider2' => $dataProvider2,]);
         }
         else
         {

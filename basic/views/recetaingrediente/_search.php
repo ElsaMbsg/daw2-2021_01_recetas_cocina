@@ -25,11 +25,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'medida') ?>
 
-    <?php // echo $form->field($model, 'notas') ?>
+    <?php  echo $form->field($model, 'notas') ?>
 
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-outline-secondary']) ?>
+    <div class="form-group text-center my-3">
+        <?= Html::submitButton(Yii::t('app', 'Buscar'), ['class' => 'btn btn-primary ']) ?>
+        <?= Html::resetButton(Yii::t('app', 'Resetear'), ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
