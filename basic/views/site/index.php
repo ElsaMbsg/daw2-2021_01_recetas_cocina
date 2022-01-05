@@ -108,12 +108,12 @@ $rutaimg="/daw2-2021_01_recetas_cocina/basic/web/images/";
 
                         <li class="nav-item btn-verde rounded mb-3">
 
-                            <div class="w-100">
+                            <a href="?r=site/vertiendaoferta&id=<?php echo $card2->id ?>" class="w-100">
                                 <span class="w-100 btn bg-danger rounded"><?php echo "¡";echo $card2->descripcion;echo "!";?></span>
                                 <span class="w-100 btn bg-warning rounded"><?php  echo $producto;echo " ("; echo $tienda; echo ") ";?></span>
                                 <span class="w-100 btn bg-success rounded"><?php echo $card2->notas;?></span>
 
-                            </div>
+                            </a>
                         </li>
                         <?php } ?>
                         
