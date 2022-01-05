@@ -19,7 +19,7 @@ use app\models\Tiendaoferta;
             {
                 if ($_GET["id"]==$card->id)
                 { ?>
-                <h2 class="text-center mb-4 bg-warning"><?php echo $card->nombre ?></h2>
+                <h1 class="text-center mb-4 bg-warning"><?php echo $card->nombre ?></h1>
                     <h3 class="text-center btn-verde">Descripción receta: </h3>
                     <p><?php echo $card->descripcion;?></p>
                 <?php }
@@ -75,10 +75,6 @@ use app\models\Tiendaoferta;
                 }
             } ?>
             </div>
-
-
-
-
 
             <?php
         }
