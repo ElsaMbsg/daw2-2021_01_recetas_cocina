@@ -141,7 +141,7 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return new UsuarioQuery(get_called_class());
     }
 
-    public $rol;
+    //public $rol;
 
     public static function esUsuarioColaborador($id)
     {
