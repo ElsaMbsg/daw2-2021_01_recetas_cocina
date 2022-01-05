@@ -73,6 +73,7 @@ class MenurecetaSearch extends Menureceta
         return $dataProvider;
     }
 
+
     public function searchQ($params)
     {
         $query = Menureceta::find();
@@ -98,6 +99,7 @@ class MenurecetaSearch extends Menureceta
             ->orFilterWhere(['like', 'menu_id', $this->q])
             ->orFilterWhere(['like', 'id', $this->q]);
 
+            
         return $dataProvider;
     }
 
