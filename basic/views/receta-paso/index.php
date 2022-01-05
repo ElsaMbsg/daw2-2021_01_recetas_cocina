@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\bootstrap5\LinkPager;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RecetaPasoSearch */
@@ -20,34 +21,30 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
+    <?=
+        GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        'options' => [
+            'class' => 'table',
+        ],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'receta_id',
             'orden',
             'descripcion:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],
-            
-            ['class' => 'yii\grid\ActionColumn',
-                'header' => 'Imágenes',
-                'template' => '{view}',
-
-                'urlCreator' => function ($action, $model, $key, $index)
-                {
-                    if ($action === 'view')
-                    {
-                        $url ='index.php?r=receta-paso-imagen%2Findex&RecetaPasoImagenSearch%5Breceta_paso_id%5D='.$model->id;
-                        return $url;
-                    }
-                },
-                ],
         ],
+            'layout' => "\n{items}\n",
+
     ]); ?>
+
+    <div class="text-center w-100">
+        <?= LinkPager::widget([
+            'pagination' => $dataProvider->pagination,
+        ])?>
+
+    </div>
 
 
 </div>
