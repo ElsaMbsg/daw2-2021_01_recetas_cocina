@@ -73,8 +73,8 @@ function sanear_string($string) {
 $url="https://www.google.com/maps/embed/v1/place?key=".$apiKey."&q=".sanear_string($direccion);
 
 ?>
-<h2>MAPA</h2>
-<button class="btn btn-verde my-3"><?php echo $direccion?></button>
+<h2 class="btn-verde">Mapa</h2>
+<button class="btn btn-success my-3"><?php echo $direccion?></button>
 <iframe
     width="100%"
     height="500px"

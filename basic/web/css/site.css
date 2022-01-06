@@ -114,3 +114,14 @@ a.desc:after {
 
 /*******************************************************************/
 
+.center{text-align:center}
+
+#space-invaders {
+    margin: 0 0;
+    display: block;
+    background: white
+}
+
+
+
+
