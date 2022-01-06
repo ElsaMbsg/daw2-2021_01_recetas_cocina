@@ -77,8 +77,8 @@ class RecetaSearch extends Receta
             ->andFilterWhere(['like', 'comensales', $this->comensales])
             ->andFilterWhere(['like', 'tiempo_elaboracion', $this->tiempo_elaboracion])
             ->andFilterWhere(['like', 'valoracion', $this->valoracion])
-            ->andFilterWhere(['like', 'usuario_id', $this->usuario_id])
-            ->andFilterWhere(['like', 'imagen', $this->imagen]);
+            ->andFilterWhere(['like', 'usuario_id', $this->usuario_id]);
+            //->andFilterWhere(['like', 'imagen', $this->imagen]);
 
         return $dataProvider;
     }
