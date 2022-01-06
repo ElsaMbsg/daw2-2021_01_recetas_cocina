@@ -69,11 +69,20 @@ class RecetaComentariosController extends Controller
         $model = new RecetaComentarios();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                if ($model->validate()) {
+                    // form inputs are valid, do something here
+                    $model->fechahora= date("Y-m-d H:i:s");
+                    
+                    if($model->save()){
+                        return $this->redirect(['view', 'id' => $model->id]);
+                    }
+                    return;
+                }
             }
-        } else {
+        } else {//No vengo del post sino con valores por defecto
             $model->loadDefaultValues();
+            $model->fechahora= date("Y-m-d H:i:s");
         }
 
         return $this->render('create', [
