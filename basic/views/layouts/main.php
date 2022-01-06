@@ -42,6 +42,7 @@ AppAsset::register($this);
     {
         $navItem=[
             ['label' => 'Inicio', 'url' => ['/site/index']],
+            ['label' => 'Categorias', 'url' => ['/site/index']],
             ['label' => 'Ingredientes', 'url' => ['/site/veringredientes']],
             ['label' => 'Recetas', 'url' => ['/site/verrecetas']],
             ['label' => 'Planificaciones', 'url' => ['/site/verplanificaciones']],
@@ -63,10 +64,12 @@ AppAsset::register($this);
                     ['label' => 'Menus', 'url' => ['/site/vermenus']],
                     ['label' => 'Planificaciones', 'url' => ['/site/verplanificaciones']],
                     ['label' => 'Tiendas', 'url' => ['/site/vertiendas']],
+                    ['label' => 'Categorias', 'url' => ['/site/categorias']],
                 ],],
             [
                 'label' => 'Mantenimiento',
                 'items' => [
+                    ['label' => 'Categorias', 'url' => ['/categorias/index']],
                     ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
                     ['label' => 'Recetas-Ingredientes', 'url' => ['/recetaingrediente/index']],
                     ['label' => 'Recetas', 'url' => ['/receta/index']],
