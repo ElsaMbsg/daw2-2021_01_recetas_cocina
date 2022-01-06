@@ -202,6 +202,9 @@ class RecetaSearch extends Receta
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 200,
+            ],
 
         ]);
 
