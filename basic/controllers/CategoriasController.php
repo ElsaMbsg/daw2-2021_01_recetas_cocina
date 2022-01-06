@@ -1,7 +1,7 @@
 <?php
 
 namespace app\controllers;
-
+use yii\helpers\ArrayHelper;
 use app\models\Categorias;
 use app\models\CategoriasSearch;
 use yii\web\Controller;
@@ -67,7 +67,12 @@ class CategoriasController extends Controller
     public function actionCreate()
     {
         $model = new Categorias();
-
+        
+        //use yii\helpers\ArrayHelper;
+        $listacategoria=ArrayHelper::map(Categorias::find()->all(),'id','nombre');
+        $listacategoria[0]="Ninguna";
+      
+        
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -75,9 +80,12 @@ class CategoriasController extends Controller
         } else {
             $model->loadDefaultValues();
         }
-
+        $model->categoria_padre_id=0;
+       
         return $this->render('create', [
             'model' => $model,
+            'listacategoria'=> $listacategoria,
+            'seleccion'=>0
         ]);
     }
 

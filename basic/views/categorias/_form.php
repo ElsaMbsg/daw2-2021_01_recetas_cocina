@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'categoria_padre_id')->textInput() ?>
+    <?= $form->field($model, 'categoria_padre_id')->dropDownList($listacategoria,['options'=>[$seleccion=>['Selected'=>true]]]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
