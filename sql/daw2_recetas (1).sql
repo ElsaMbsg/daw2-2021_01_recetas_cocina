@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-01-2022 a las 17:06:29
+-- Tiempo de generación: 05-01-2022 a las 19:57:39
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -257,7 +257,8 @@ CREATE TABLE `receta_ingredientes` (
 --
 
 INSERT INTO `receta_ingredientes` (`id`, `receta_id`, `ingrediente_id`, `cantidad`, `medida`, `notas`) VALUES
-(1, 6, 10, 2, 'unidades', '');
+(1, 6, 10, 2, 'unidades', ''),
+(2, 1, 10, 3, 'Unidades', '');
 
 -- --------------------------------------------------------
 
@@ -376,8 +377,14 @@ CREATE TABLE `tiendas` (
 --
 
 INSERT INTO `tiendas` (`id`, `nombre`, `domicilio`, `poblacion`, `provincia`, `usuario_id`, `activa`, `visible`) VALUES
-(1, 'Alimerka', 'Dr. Fleming, 1', 'Zamora', 'Zamora', 2, 1, 1),
-(2, 'Carrefour Express', 'Ctra. Pueblica, 3', 'Tábara', 'Zamora', 3, 1, 0);
+(1, 'Alimerka', 'Dr. Fleming, 1', 'Zamora', 'Zamora', 11, 1, 1),
+(2, 'Carrefour Express', 'Ctra. Pueblica, 3', 'Tábara', 'Zamora', 7, 1, 0),
+(5, 'Froiz', 'C. Argentina, 13', 'Zamora', 'Zamora', 4, 1, 1),
+(6, 'Gadis', 'Av. de Portugal, 12', 'Zamora', 'Zamora', 5, 1, 1),
+(7, 'Lupa', 'P.º de Canalejas, 138', 'Salamanca', 'Salamanca', 6, 1, 1),
+(8, 'Carrefour Express', 'C. María Auxiliadora, 23', 'Salamanca', 'Salamanca', 7, 1, 1),
+(9, 'Mercadona', 'Calle Ctra. de Salamanca, 7', 'Bejar', 'Salamanca', 8, 1, 1),
+(10, 'Dia', 'C. Padre Vicente Salgado, 1', 'Puebla de Sanabria', 'Zamora', 9, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -395,6 +402,18 @@ CREATE TABLE `tienda_ofertas` (
   `medida` varchar(45) DEFAULT NULL,
   `notas` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tienda_ofertas`
+--
+
+INSERT INTO `tienda_ofertas` (`id`, `tienda_id`, `ingrediente_id`, `descripcion`, `envase`, `cantidad`, `medida`, `notas`) VALUES
+(1, 1, 1, 'Oferta 3x2', 'Botella', 3, 'Lt', '2€'),
+(2, 2, 10, 'Oferta 2x1', 'Docena', 1, 'Docena', '1.25€'),
+(3, 2, 22, 'Oferta 3+1', 'Malla', 4, 'Kg', '3€'),
+(4, 1, 16, 'Oferta 2+1', 'Malla', 3, 'Kg', '2€'),
+(5, 2, 21, 'Oferta 2x1', 'Malla', 1, 'unidad', '0.50€'),
+(6, 2, 18, '50% descuento', 'Envase Plástico', 200, 'g', '1.25€');
 
 -- --------------------------------------------------------
 
@@ -418,8 +437,13 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `email`, `password`, `nombre`, `rol`, `aceptado`, `creado`) VALUES
 (1, 'prueba@mail.com', '711383a59fda05336fd2ccf70c8059d1523eb41a', 'prueba', 'C', 1, '2022-01-02 16:05:26'),
-(2, 'prueba@hola.com', '711383a59fda05336fd2ccf70c8059d1523eb41a', 'prueba2', 'C', 0, '2022-01-02 21:02:58'),
-(3, 'tienda@hola.com', 'hola', 'Alimerka', 'T', 1, '0000-00-00 00:00:00');
+(4, 'froiz@mail.com', '03c18fee4ea554de4077575d363a4f84ad20c90f', 'Froiz', 'T', 1, '2022-01-05 19:42:11'),
+(5, 'gadis@mail.com', '673d1de760f5b66914b38ebb2c79a4b181b01209', 'Gadis', 'T', 1, '2022-01-05 19:42:35'),
+(6, 'lupa@mail.com', '900bac9f13ceef619b0b3779b0ac185caaf9bdb3', 'Lupa', 'T', 1, '2022-01-05 19:42:58'),
+(7, 'carrefour@mail.com', '743a8f254cbfe5fd29dfb3468d7e516b27af468e', 'Carrefour', 'T', 1, '2022-01-05 19:43:27'),
+(8, 'mercadona@hola.com', '50f0f0b11f06f81d6a2294aa82cf70a8bd5590f5', 'Mercadona', 'T', 1, '2022-01-05 19:43:46'),
+(9, 'dia@hola.com', '4967e07bc327c714541206122152ddfcfdb5b27c', 'Dia', 'T', 1, '2022-01-05 19:44:02'),
+(11, 'alimerka@hola.com', '0084d73878ed316b0973510036ef5b4c17bf161a', 'Alimerka', 'T', 1, '2022-01-05 19:49:06');
 
 --
 -- Índices para tablas volcadas
@@ -579,7 +603,7 @@ ALTER TABLE `receta_comentarios`
 -- AUTO_INCREMENT de la tabla `receta_ingredientes`
 --
 ALTER TABLE `receta_ingredientes`
-  MODIFY `id` int(12) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(12) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `receta_pasos`
@@ -597,19 +621,19 @@ ALTER TABLE `receta_paso_imagenes`
 -- AUTO_INCREMENT de la tabla `tiendas`
 --
 ALTER TABLE `tiendas`
-  MODIFY `id` int(12) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(12) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `tienda_ofertas`
 --
 ALTER TABLE `tienda_ofertas`
-  MODIFY `id` int(12) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(12) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(12) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(12) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

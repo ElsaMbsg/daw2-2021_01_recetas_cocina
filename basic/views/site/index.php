@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use app\models\Ingrediente;
+use app\models\Tienda;
 use yii\bootstrap5\LinkPager;
 
 $this->title = 'Aplicación Web de recetas';
@@ -15,6 +17,7 @@ $rutaimg="/daw2-2021_01_recetas_cocina/basic/web/images/";
 
 
             <div class="col-lg-1 " style="display: inline;background-color: #ffe07d; border-radius: 20px; margin-bottom: 20px">
+                <button class="w-100 btn bg-primary mx-0 mt-3" style="border-radius: 15px;  color: white">CATEGORIAS</button>
                 <div class="d-flex flex-column h-100 mb-4 mt-4" style="width: auto; margin: auto;">
 
                     <details>
@@ -91,17 +94,29 @@ $rutaimg="/daw2-2021_01_recetas_cocina/basic/web/images/";
             </div>
 
             <div class="col-sm-12 col-lg-1" style="display: inline; background-color: #ffe07d; border-radius: 20px;margin-bottom: 20px" >
+                <button class="w-100 btn bg-primary mx-0 mt-3" style="border-radius: 15px;  color: white">% OFERTAS %</button>
                 <div class="d-flex flex-column h-100 mb-sm-4 mt-sm-4" style="width: auto; margin: auto;">
-                    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-                        <li class="nav-item"> <a href="#" class="nav-link active py-3 border-bottom"> <i class="fa fa-home"></i> <small>Ofertas</small> </a> </li>
-                        <li> <a href="#" class="nav-link bg-warning py-3 border-bottom"> <i class="fa fa-dashboard"></i> <small>Ofertas</small> </a> </li>
-                        <li> <a href="#" class="nav-link bg-warning py-3 border-bottom"> <i class="fa fa-dashboard"></i> <small>Anuncios</small> </a> </li>
-                        <li> <a href="#" class="nav-link bg-warning py-3 border-bottom"> <i class="fa fa-dashboard"></i> <small>Ofertas</small> </a> </li>
-                        <li> <a href="#" class="nav-link bg-warning py-3 border-bottom"> <i class="fa fa-dashboard"></i> <small>Ofertas</small> </a> </li>
-                        <li> <a href="#" class="nav-link bg-warning py-3 border-bottom"> <i class="fa fa-dashboard"></i> <small>Ofertas</small> </a> </li><li> <a href="#" class="nav-link bg-warning py-3 border-bottom"> <i class="fa fa-dashboard"></i> <small>Vegetariana</small> </a> </li>
-                        <li> <a href="#" class="nav-link bg-warning py-3 border-bottom"> <i class="fa fa-dashboard"></i> <small>Ofertas</small> </a> </li>
-                        <li> <a href="#" class="nav-link bg-warning py-3 border-bottom"> <i class="fa fa-dashboard"></i> <small>Ofertas</small> </a> </li>
-                        <li> <a href="#" class="nav-link bg-warning py-3 border-bottom"> <i class="fa fa-dashboard"></i> <small>Ofertas</small> </a> </li>
+
+                    <ul class="nav nav-pills nav-flush flex-column mb-auto text- mt-3 ">
+
+                        <?php foreach ($modeloOfertas as $card2){
+                            $modelTienda=Tienda::find()->where(['id'=>$card2->tienda_id])->one();
+                            $modelProducto=Ingrediente::find()->where(['id'=>$card2->ingrediente_id])->one();
+                            $tienda=$modelTienda->nombre;
+                            $producto=$modelProducto->nombre;
+                            ?>
+
+                        <li class="nav-item btn-verde rounded mb-3">
+
+                            <a href="?r=site/vertiendaoferta&id=<?php echo $card2->id ?>" class="w-100">
+                                <span class="w-100 btn bg-danger rounded"><?php echo "¡";echo $card2->descripcion;echo "!";?></span>
+                                <span class="w-100 btn bg-warning rounded"><?php  echo $producto;echo " ("; echo $tienda; echo ") ";?></span>
+                                <span class="w-100 btn bg-success rounded"><?php echo $card2->notas;?></span>
+
+                            </a>
+                        </li>
+                        <?php } ?>
+                        
                     </ul>
 
                 </div>
