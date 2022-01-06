@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'usuario_id')->textInput() ?>
 
-    <?= $form->field($model, 'fechahora')->textInput() ?>
+    <?= $form->field($model, 'fechahora')->hiddenInput()->label(false) ?>
 
     <?= $form->field($model, 'texto')->textarea(['rows' => 6]) ?>
 
