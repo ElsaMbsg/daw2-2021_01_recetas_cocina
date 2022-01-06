@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\RecetaComentarios;
-use app\models\RecetaComentariosSearch;
+use app\models\RecetaCategorias;
+use app\models\RecetaCategoriasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * RecetaComentariosController implements the CRUD actions for RecetaComentarios model.
+ * RecetaCategoriasController implements the CRUD actions for RecetaCategorias model.
  */
-class RecetaComentariosController extends Controller
+class RecetaCategoriasController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,12 +32,12 @@ class RecetaComentariosController extends Controller
     }
 
     /**
-     * Lists all RecetaComentarios models.
+     * Lists all RecetaCategorias models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new RecetaComentariosSearch();
+        $searchModel = new RecetaCategoriasSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -47,7 +47,7 @@ class RecetaComentariosController extends Controller
     }
 
     /**
-     * Displays a single RecetaComentarios model.
+     * Displays a single RecetaCategorias model.
      * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -60,29 +60,20 @@ class RecetaComentariosController extends Controller
     }
 
     /**
-     * Creates a new RecetaComentarios model.
+     * Creates a new RecetaCategorias model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new RecetaComentarios();
+        $model = new RecetaCategorias();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post())) {
-                if ($model->validate()) {
-                    // form inputs are valid, do something here
-                    $model->fechahora= date("Y-m-d H:i:s");
-                    
-                    if($model->save()){
-                        return $this->redirect(['view', 'id' => $model->id]);
-                    }
-                    return;
-                }
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
             }
-        } else {//No vengo del post sino con valores por defecto
+        } else {
             $model->loadDefaultValues();
-            $model->fechahora= date("Y-m-d H:i:s");
         }
 
         return $this->render('create', [
@@ -91,7 +82,7 @@ class RecetaComentariosController extends Controller
     }
 
     /**
-     * Updates an existing RecetaComentarios model.
+     * Updates an existing RecetaCategorias model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return mixed
@@ -111,7 +102,7 @@ class RecetaComentariosController extends Controller
     }
 
     /**
-     * Deletes an existing RecetaComentarios model.
+     * Deletes an existing RecetaCategorias model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return mixed
@@ -125,15 +116,15 @@ class RecetaComentariosController extends Controller
     }
 
     /**
-     * Finds the RecetaComentarios model based on its primary key value.
+     * Finds the RecetaCategorias model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return RecetaComentarios the loaded model
+     * @return RecetaCategorias the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = RecetaComentarios::findOne($id)) !== null) {
+        if (($model = RecetaCategorias::findOne($id)) !== null) {
             return $model;
         }
 
