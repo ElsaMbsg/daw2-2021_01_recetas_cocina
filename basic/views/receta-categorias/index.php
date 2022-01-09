@@ -14,13 +14,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Crear Receta Categorias', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <!-- <p>
+        Html::a('Crear Receta Categorias', ['create'], ['class' => 'btn btn-success']) 
+    </p> -->
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    <?php if (isset($_GET['msg'])){
+        echo '<p class="btn btn-danger w-100">';
+        echo $_GET['msg'];
+        echo '</p>';
+    }?>
     <?=  
+    
         GridView::widget([
         'dataProvider' => $dataProvider,
         'options' => [

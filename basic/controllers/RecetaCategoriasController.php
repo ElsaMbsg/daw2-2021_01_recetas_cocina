@@ -1,7 +1,7 @@
 <?php
 
 namespace app\controllers;
-
+use Yii;
 use app\models\RecetaCategorias;
 use app\models\RecetaCategoriasSearch;
 use yii\web\Controller;
@@ -96,7 +96,15 @@ class RecetaCategoriasController extends Controller
      */
     public function actionUpdate($id)
     {
+        
+            
         $model = Receta::findOne($id);
+        $idusuario=$model->usuario_id;
+        if ($idusuario == Yii::$app->user->identity->id || 
+        Yii::$app->user->identity->rol == 'A' || 
+        Yii::$app->user->identity->rol == 'S' ) 
+        {
+
         //Buscamos todas las categorias
         $allcategorias=Categorias::find()->all();
         //Buscamos las relaciones que tiene receta con categorias
@@ -120,6 +128,11 @@ class RecetaCategoriasController extends Controller
             'categoriaReceta'=>$categoriaReceta,
             'arrayCategorias'=>$arrayCategorias,
         ]);
+    }//if
+    else
+        {
+            return $this->redirect(['index','msg'=>"No puedes añadir la categoria a esta receta"]);
+        }
     }
 
     /**
