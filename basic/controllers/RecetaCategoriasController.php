@@ -7,6 +7,10 @@ use app\models\RecetaCategoriasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
+use app\models\Receta;
+use app\models\Categorias;
+use app\models\RecetaSearch;
 
 /**
  * RecetaCategoriasController implements the CRUD actions for RecetaCategorias model.
@@ -37,13 +41,22 @@ class RecetaCategoriasController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new RecetaCategoriasSearch();
+        
+        $searchModel = new RecetaSearch();
+       
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+        /*$searchModel = new RecetaCategoriasSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);*/
     }
 
     /**
@@ -64,21 +77,14 @@ class RecetaCategoriasController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($categoria_id,$receta_id)
     {
         $model = new RecetaCategorias();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        $model->categoria_id=$categoria_id;
+        $model->receta_id=$receta_id;
+        $model->save();
+        return $this->redirect(['update','id'=>$receta_id]);
     }
 
     /**
@@ -90,14 +96,29 @@ class RecetaCategoriasController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
-
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model = Receta::findOne($id);
+        //Buscamos todas las categorias
+        $allcategorias=Categorias::find()->all();
+        //Buscamos las relaciones que tiene receta con categorias
+        $filterall=RecetaCategorias::findAll(['receta_id'=>$id]); 
+        $idfilterall=ArrayHelper::map($filterall,'categoria_id','categoria_id');
+        $categoriaReceta=array();
+        $arrayCategorias=array();
+        foreach($allcategorias as $categoria){
+            if(isset($idfilterall[$categoria->id])){
+                $categoriaReceta[]=$categoria;
+            }else{
+                $arrayCategorias[]=$categoria; 
+            }
         }
+        /*if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }*/
 
         return $this->render('update', [
             'model' => $model,
+            'categoriaReceta'=>$categoriaReceta,
+            'arrayCategorias'=>$arrayCategorias,
         ]);
     }
 
@@ -108,11 +129,11 @@ class RecetaCategoriasController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($categoria_id,$receta_id)
     {
-        $this->findModel($id)->delete();
+        RecetaCategorias::findOne(['categoria_id'=>$categoria_id,'receta_id'=>$receta_id])->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['update','id'=>$receta_id]);
     }
 
     /**

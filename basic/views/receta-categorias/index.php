@@ -7,9 +7,9 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\RecetaCategoriasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Receta Categorias';
+$this->title = 'Recetas y sus categorias asociadas';
 $this->params['breadcrumbs'][] = $this->title;
-?>
+?> 
 <div class="receta-categorias-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -20,7 +20,43 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
+    <?=  
+        GridView::widget([
+        'dataProvider' => $dataProvider,
+        'options' => [
+            'class' => 'table',
+        ],
+        'columns' => [
+        
+            'id',
+            'nombre:ntext',
+            // 'descripcion:ntext',
+            //'tipo_plato',
+            //'dificultad',
+            //'comensales',
+            //'tiempo_elaboracion',
+            //'valoracion',
+            //'usuario_id',
+           // 'aceptada',
+            //'imagen',
+
+            ['class' => 'yii\grid\ActionColumn',
+                'header' => 'Añadir categoria', 
+                'template' => '{update}',
+                'urlCreator' => function ($action, $model, $key, $index)
+                {
+                    if ($action === 'update')
+                    {
+                        $url ='index.php?r=receta-categorias%2Fupdate&id='.$model->id;
+                        return $url;
+                    }
+                },
+            ],
+
+        ],
+            'layout' => "\n{items}\n",
+    ]); 
+    /*GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -32,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
-
+    ]); */?>
+Pulse en el icono del lapiz para ver las categorias asociadas y añadir nuevas o eliminarlas.
 
 </div>
